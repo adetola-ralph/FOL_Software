@@ -1,10 +1,6 @@
-$(document).ready(function() {
-	/*
-		1. load the country table into a dropdown box from mysql db
-		2. load the age groups into the dropdown box from mysql db
-		3. 
-	*/
+$(document).ready(function() {	
 	
+	//Ajax to load country into select form
 	$.ajax({
 	url:"../php_ajax/getcountry.php",
 	type: "GET",
@@ -13,8 +9,22 @@ $(document).ready(function() {
 			var countryselect = showObjectjQuery(json);
 			$("#country").html(countryselect);
 		}
-		
-	})
+	});
+	
+	//Post code validator
+	$("#checkpostcode").on("click",function(){
+	var tryyu = checkPostCode();
+	alert(tryyu);
+		if(checkPostCode() == false)
+		{
+			$("#postcodeerror").removeClass("hide");
+		}
+		else
+		{
+			$("#postcodeerror").addClass("hide");
+		}
+	});
+	
 });
 
 //ajax function that deals with correct postcode format
@@ -23,11 +33,29 @@ $(document).ready(function() {
 //js code to see if the required fields are filled
 //js code that catches submit and uses all above functions for validation
 
+
+
+
 function checkPostCode()
 {
+	var postcode = $("#postcode").val();
+	var regPostcode = /^([a-zA-Z]){1}([0-9][0-9]|[0-9]|[0-9][a-zA-Z]|[a-zA-Z][0-9][a-zA-Z]|[a-zA-Z][0-9][0-9]|[a-zA-Z][0-9]){1}([ ])([0-9][a-zA-z][a-zA-z]){1}$/;
 	
+	if(regPostcode.test(postcode) == false)
+	{
+		//$("#postcodeerror").removeClass("hide");
+		return false;
+	}
+	else
+	{
+		//$("#postcodeerror").addClass("hide");
+		return true;
+	}
 }
 
+/**
+*function that converts json into options to be loaded into the select input form
+*/
 function showObjectjQuery(obj) {
   var result = "";
   $.each(obj, function(k, v) {  
