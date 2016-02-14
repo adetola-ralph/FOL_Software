@@ -144,7 +144,7 @@
                             <div class="form-group">
                                 <label for="country" class="control-label col-sm-2">Country:</label>
                                 <div class="col-sm-10">
-                                    <select name="country" id="country" required class="form-control">
+                                    <select name="country" id="country" class="form-control">
                                         <!--dynamically loaded select form-->
                                     </select> 
                                 </div>
