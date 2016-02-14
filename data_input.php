@@ -2,13 +2,13 @@
       <div>
       		<form method="post" action="data_process.php" role="form" class="form-horizontal">
 				<div class="row">
-                    <div class="alert alert-warning fade in">
+                    <div class="alert alert-warning fade in hidden">
                     	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     	You have 1 or more issues to be dealt with
                     </div>
                 </div>            
                 
-            	<div class="row">
+            	<div class="row"><!--beginning of personal details-->
                 	<div class="col-sm-6">
                         <fieldset>
                             <legend>Personal Details</legend>
@@ -60,9 +60,9 @@
                                 </div>
                             </div>
                         </fieldset>
-                    </div>
+                    </div><!--end of personal details-->
                     
-                    <div class="col-sm-6">
+                    <div class="col-sm-6"><!--beginning of contact details-->
                         <fieldset>
                         	
                             <legend>Contact Details</legend>
@@ -95,12 +95,30 @@
                             </div>
                         </fieldset>
                         </div>
-                </div>
+                </div><!--end of contact details-->
                 
-                <div class="row">
+                <div class="row"><!--beginning of Address Details-->
                 	<div class="col-sm-6">
                         <fieldset>
                             <legend>Address Details</legend>
+                            
+                            <div class="form-group">
+                                <label for="postcode" class="control-label col-sm-2">Postcode:</label>
+                                <div class="col-sm-6">
+                                	<input type="text" id="postcode" name="postcode" required class="form-control" maxlength="8"/>
+                                    <span class="label label-warning hide" id="postcodeerror">You either did not enter a valid postcode or your format is wrong</span>
+                                </div>
+                                <div class="col-sm-4"><input type="button" id="checkpostcode" class="btn btn-primary btn-md" value="Check Postcode"></div>
+                            </div>
+                            
+                            <div class="form-group hidden">
+                            	<label for="selectaddress" class="control-label col-sm-2">Select an address:</label>
+                                <div class="col-sm-10">
+                                	<select name="country" id="selectaddress" required class="form-control">
+                                        <!--dynamically loaded select form-->
+                                    </select>
+                                </div>
+                            </div>
                             
                             <div class="form-group">
                                 <label for="address" class="control-label col-sm-2">Address:</label>
@@ -133,16 +151,24 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="postcode" class="control-label col-sm-2">Postcode:</label>
+                            	<label for="zonal_coordinator" class="control-label col-sm-2">Zonal Coordinator</label>
                                 <div class="col-sm-10">
-                                	<input type="text" name="postcode" required class="form-control"/>
-                                    <span class="label label-warning ">You either did not enter a valid postcode or your format is wrong</span>
+                                	<select id="zonal_coordinator" name="zonal_coordinator" class="form-control">
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                            	<label for="area_supervisor" class="control-label col-sm-2">Area Supervisor</label>
+                                <div class="col-sm-10">
+                                	<select id="area_supervisor" name="area_supervisor" class="form-control">
+                                    </select>
                                 </div>
                             </div>
                         </fieldset>
-                	</div>
+                	</div><!--end of address details-->
                 
-                    <div class="col-sm-6">
+                    <div class="col-sm-6"><!--beginning of ???-->
                         <fieldset>
                             <legend> ???</legend>
                             <div class="form-group">
@@ -167,14 +193,14 @@
                                 </div>
                             </div>
                         </fieldset>
-                    </div>
+                    </div><!--end of ???-->
                 </div>
                 
-                <div class="row">
+                <div class="row"><!--beginning of submit-->
                 	<div class="col-sm-offset-6 col-sm-6">
                         <input type="submit" name="submit" class="btn btn-primary btn-lg">
                     </div>
-                </div>
+                </div><!--end of submit-->
             </form>
       </div>
 <?php include_once("layout/footer.php");?>
