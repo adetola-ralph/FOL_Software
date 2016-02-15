@@ -114,7 +114,7 @@
                             <div class="form-group hidden">
                             	<label for="selectaddress" class="control-label col-sm-2">Select an address:</label>
                                 <div class="col-sm-10">
-                                	<select name="country" id="selectaddress" required class="form-control">
+                                	<select id="selectaddress" class="form-control">
                                         <!--dynamically loaded select form-->
                                     </select>
                                 </div>
