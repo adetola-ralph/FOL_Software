@@ -1,8 +1,8 @@
 <?php include_once("layout/header.php");?>
       <div>
-      		<form method="post" action="data_process.php" role="form" class="form-horizontal">
+      		<form method="post" role="form" class="form-horizontal" >
 				<div class="row">
-                    <div class="alert alert-warning fade in hidden">
+                    <div class="alert alert-warning hidden"  id="alert">
                     	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     	You have 1 or more issues to be dealt with
                     </div>
@@ -34,14 +34,14 @@
                             <div class="form-group"> 
                                 <label for="firstname" class="control-label col-sm-2">FirstName:</label>
                                 <div class="col-sm-10">
-                                	<input type="text" name="firstname" required class="form-control" placeholder="FirstName"/>
+                                	<input type="text" name="firstname" required class="form-control required" placeholder="FirstName"/>
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label for="lastname" class="control-label col-sm-2">LastName:</label>
                                 <div class="col-sm-10">
-                                	<input type="text" name="lastname" required class="form-control" placeholder="Lastname"/>
+                                	<input type="text" name="lastname" required class="form-control required" placeholder="Lastname"/>
                                 </div>
                             </div>
                             
@@ -105,7 +105,7 @@
                             <div class="form-group">
                                 <label for="postcode" class="control-label col-sm-2">Postcode:</label>
                                 <div class="col-sm-6">
-                                	<input type="text" id="postcode" name="postcode" required class="form-control" maxlength="8"/>
+                                	<input type="text" id="postcode" name="postcode" required class="form-control required" maxlength="8"/>
                                     <span class="label label-warning hide" id="postcodeerror">You either did not enter a valid postcode or your format is wrong</span>
                                 </div>
                                 <div class="col-sm-4"><input type="button" id="checkpostcode" class="btn btn-primary btn-md" value="Check Postcode"></div>
@@ -123,21 +123,21 @@
                             <div class="form-group">
                                 <label for="address" class="control-label col-sm-2">Address:</label>
                                 <div class="col-sm-10">
-                                	<input name="address" type="text" required  class="form-control"/>
+                                	<input name="address" type="text" required  class="form-control required"/>
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label for="county" class="control-label col-sm-2">County:</label>
                                 <div class="col-sm-10">
-                                	<input type="text" name="county" required class="form-control"/>
+                                	<input type="text" name="county" required class="form-control required"/>
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label for="city" class="control-label col-sm-2">City:</label>
                                 <div class="col-sm-10">
-                                	<input type="text" name="city" required class="form-control"/>
+                                	<input type="text" name="city" required class="form-control required"/>
                                 </div>
                             </div>
                             
@@ -182,7 +182,7 @@
                             <div class="form-group">
                                 <label for="prayerPoint" class="control-label col-sm-2">Prayer Points</label>
                                 <div class="col-sm-10">
-                                	<textarea name="prayerPoints" required class="form-control" rows="5"></textarea>
+                                	<textarea name="prayerPoints" required class="form-control required" rows="5"></textarea>
                                 </div>
                             </div>
                             
