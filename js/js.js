@@ -36,8 +36,24 @@ $(document).ready(function()
 		}
 	});
 	
-	$("#submit").on("click",function(){
+	$("#submit").on("click",function(event){
+		var errorValue = 0;
+		$(".required").each(function(){
+			if($(this).val().length === 0)
+			{
+			  errorValue++;
+			}	
+		});
 		
+		if(errorValue>0)
+		{
+			event.preventDefault();
+			$("#alert").removeClass("hidden");
+		}
+		else
+		{
+		  	alert("All clear");
+		}
 	});
 	
 });
