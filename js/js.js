@@ -1,5 +1,7 @@
 $(document).ready(function() 
 {	
+
+	var errorValue = 0;
 	//Ajax to load country into select form
 	$.ajax({
 	url:"../php_ajax/getcountry.php",
@@ -20,6 +22,7 @@ $(document).ready(function()
 		}
 		else
 		{
+			$("#postcode").addClass("valid");
 			$("#postcodeerror").addClass("hide");
 			var postcode = $("#postcode").val();
 			var outcode = postcode.split(" ")[0];
@@ -37,13 +40,17 @@ $(document).ready(function()
 	});
 	
 	$("#submit").on("click",function(event){
-		var errorValue = 0;
 		$(".required").each(function(){
 			if($(this).val().length === 0)
 			{
 			  errorValue++;
 			}	
 		});
+		
+		if(!($("#postcode").hasClass("valid")))
+		{
+			errorValue++;
+		}else if($("#postcode").hasClass("valid")){errorValue--;}
 		
 		if(errorValue>0)
 		{
