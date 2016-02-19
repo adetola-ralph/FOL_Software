@@ -197,8 +197,12 @@
                 </div>
                 
                 <div class="row"><!--beginning of submit-->
-                	<div class="col-sm-offset-6 col-sm-6">
+                	<div class="col-sm-4">
+                    </div>
+                	<div class="col-sm-4">
                         <input type="submit" id="submit" name="submit" class="btn btn-primary btn-lg">
+                    </div>
+                    <div class="col-sm-4">
                     </div>
                 </div><!--end of submit-->
             </form>
