@@ -1,7 +1,5 @@
 $(document).ready(function() 
-{	
-
-	var errorValue = 0;
+{
 	//Ajax to load country into select form
 	$.ajax({
 	url:"../php_ajax/getcountry.php",
@@ -40,6 +38,7 @@ $(document).ready(function()
 	});
 	
 	$("#submit").on("click",function(event){
+		var errorValue = 0;
 		$(".required").each(function(){
 			if($(this).val().length === 0)
 			{
@@ -51,6 +50,8 @@ $(document).ready(function()
 		{
 			errorValue++;
 		}else if($("#postcode").hasClass("valid")){errorValue--;}
+		
+		//alert(errorValue);
 		
 		if(errorValue>0)
 		{
