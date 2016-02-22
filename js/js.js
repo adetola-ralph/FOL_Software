@@ -51,7 +51,6 @@ $(document).ready(function()
 			errorValue++;
 		}else if($("#postcode").hasClass("valid")){errorValue--;}
 		
-		//alert(errorValue);
 		
 		if(errorValue>0)
 		{
@@ -60,7 +59,28 @@ $(document).ready(function()
 		}
 		else
 		{
+			//event.preventDefault();
 		  	alert("All clear");
+			//alert(JSON.stringify($("#form").serializeArray()));
+            alert($("#form").serialize());
+            console.log($("#form").serialize());
+		   $.ajax({
+				 url:"../data_process.php",
+				 type:"POST",
+				 data:$("#form").serialize(),
+				 dataType:"",
+				 success: function(data){
+					   if(data == true)
+					   {
+							   alert("Inserted sucessfully");
+					   }
+					   else if(data == false)
+					   {
+							   alert("not Inserted sucessfully");
+					   }
+			   		}
+				 });
+
 		}
 	});
 	
