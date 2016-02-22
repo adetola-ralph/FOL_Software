@@ -58,8 +58,8 @@ class convertHelper
 	
 	public function insertConvert(Convert $convert)
 	{
-		$stringValues = "title,firstname,lastname,agerange,homeTelNum,officeTelNum,mobileTelNum,email,postcode,address,county,city,country,altarCallResponse,prayerPoints,regDate";
-		$query = "INSERT INTO converts(".$stringValues.") VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		$stringValues = "title,firstname,lastname,agerange,homeTelNum,officeTelNum,mobileTelNum,email,postcode,address,county,city,country,altarCallResponse,prayerPoints,regDate,area_supers,zonal_coor";
+		$query = "INSERT INTO converts(".$stringValues.") VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		$stmt = $this->conn->prepare($query);
 		
 		//$stmt->bindParam(1,$convert->id,PDO::PARAM_INT);
@@ -79,6 +79,8 @@ class convertHelper
 		$stmt->bindParam(14,$convert->altarCallResponse,PDO::PARAM_STR);
 		$stmt->bindParam(15,$convert->prayerPoints,PDO::PARAM_STR);
 		$stmt->bindParam(16,$convert->regDate,PDO::PARAM_STR);
+		$stmt->bindParam(17,$convert->area_supers,PDO::PARAM_STR);
+		$stmt->bindParam(18,$convert->zonal_coor,PDO::PARAM_STR);
 		
 		$stmt->execute();
 
@@ -94,7 +96,7 @@ class convertHelper
 	
 	public function updateConvert(Convert $convert)
 	{
-		$stringValues = "title = ?,firstname = ?,lastname = ?,agerange = ?,homeTelNum = ?,officeTelNum = ?,mobileTelNum = ?,email = ?,postcode = ?,address = ?,county = ?,city = ?,country = ?,altarCallResponse = ?,prayerPoints = ?,regDate = ?";
+		$stringValues = "title = ?,firstname = ?,lastname = ?,agerange = ?,homeTelNum = ?,officeTelNum = ?,mobileTelNum = ?,email = ?,postcode = ?,address = ?,county = ?,city = ?,country = ?,altarCallResponse = ?,prayerPoints = ?,area_supers = ?,zonal_coor = ?";
 		
 		$query = "UPDATE converts(".$stringValues.") WHERE id = ?";
 		$stmt = $this->conn->prepare($query);
@@ -113,8 +115,10 @@ class convertHelper
 		$stmt->bindParam(13,$convert->country,PDO::PARAM_STR);
 		$stmt->bindParam(14,$convert->altarCallResponse,PDO::PARAM_STR);
 		$stmt->bindParam(15,$convert->prayerPoints,PDO::PARAM_STR);
-		$stmt->bindParam(16,$convert->regDate,PDO::PARAM_STR);
-		$stmt->bindParam(17,$convert->id,PDO::PARAM_INT);
+		$stmt->bindParam(16,$convert->area_supers,PDO::PARAM_STR);
+		$stmt->bindParam(17,$convert->zonal_coor,PDO::PARAM_STR);
+		
+		$stmt->bindParam(18,$convert->id,PDO::PARAM_INT);
 		$stmt->execute();
 		
 		if($stmt->rowCount() == 1)

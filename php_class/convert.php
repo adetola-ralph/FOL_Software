@@ -18,9 +18,11 @@ class Convert
 	public $altarCallResponse;
 	public $prayerPoints;
 	public $regDate;
+	public $area_supers;
+	public $zonal_coor;
 	
 	
-	public function __construct($title,$firstname,$lastname,$agerange,$homeTelNum,$officeTelNum,$mobileTelNum,$email,$postcode,$address,$county,$city,$country,$altarCallResponse,$prayerPoints,$regDate)
+	public function __construct($title,$firstname,$lastname,$agerange,$homeTelNum,$officeTelNum,$mobileTelNum,$email,$postcode,$address,$county,$city,$country,$altarCallResponse,$prayerPoints,$regDate,$area_supers,$zonal_coor)
 	{
 		//$this->id = $id;
 		$this->title = $title;
@@ -39,6 +41,8 @@ class Convert
 		$this->altarCallResponse = $altarCallResponse;
 		$this->prayerPoints = $prayerPoints;
 		$this->regDate = $regDate;
+		$this->area_supers = $area_supers;
+		$this->zonal_coor = $zonal_coor;
 	}
 }
 ?>

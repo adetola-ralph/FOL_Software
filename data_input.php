@@ -1,6 +1,6 @@
 <?php include_once("layout/header.php");?>
       <div>
-      		<form method="post" role="form" class="form-horizontal" >
+      		<form method="post" role="form" class="form-horizontal" id="form" >
 				<div class="row">
                     <div class="alert alert-warning hidden"  id="alert">
                     	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -153,7 +153,7 @@
                             <div class="form-group">
                             	<label for="zonal_coordinator" class="control-label col-sm-2">Zonal Coordinator</label>
                                 <div class="col-sm-10">
-                                	<select id="zonal_coordinator" name="zonal_coordinator" class="form-control">
+                                	<select id="zonal_coordinator" name="zonal_coordinator" class="form-control required" required>
                                     </select>
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
                             <div class="form-group">
                             	<label for="area_supervisor" class="control-label col-sm-2">Area Supervisor</label>
                                 <div class="col-sm-10">
-                                	<select id="area_supervisor" name="area_supervisor" class="form-control">
+                                	<select id="area_supervisor" name="area_supervisor" class="form-control required" required>
                                     </select>
                                 </div>
                             </div>
