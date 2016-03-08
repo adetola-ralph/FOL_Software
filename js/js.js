@@ -1,5 +1,8 @@
 $(document).ready(function() 
 {
+	//Initialisation of the Bootstrap popover feature I used in postcode input object
+	$('[data-toggle="popover"]').popover();
+	
 	//Ajax to load country into select form
 	$.ajax({
 	url:"../php_ajax/getcountry.php",
@@ -24,6 +27,14 @@ $(document).ready(function()
 			$("#postcodeerror").addClass("hide");
 			var postcode = $("#postcode").val();
 			var outcode = postcode.split(" ")[0];
+			
+			var otherOutcode = ["AF1","EM1","US1","OT1"];
+			
+			var otherOutcodeResult = otherOutcode.some(function(item, index, array){
+				return outcode === item;				
+				});
+				
+			if(otherOutcodeResult){alert("non UK postcode");}	
 			alert (outcode);
 			/*$.ajax({
 				url:"../php_ajax/getSupCoor.php",
