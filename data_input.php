@@ -101,11 +101,13 @@
                 	<div class="col-sm-6">
                         <fieldset>
                             <legend>Address Details</legend>
-                            
                             <div class="form-group">
                                 <label for="postcode" class="control-label col-sm-2">Postcode:</label>
                                 <div class="col-sm-6">
-                                	<input type="text" id="postcode" name="postcode" required class="form-control required" maxlength="8"/>
+                                	<input type="text" id="postcode" name="postcode" required class="form-control required" maxlength="8" data-toggle="popover" title="Enter the following for non-UK postcodes" data-trigger="hover focus" data-placement="bottom" data-html="true" data-content="<p><strong>AF1 1CA</strong> for an African country</p>
+                                    <p><strong>EM1 1EA</strong> for a European, Asian & Middle Eastern Country</p>
+                                    <p><strongUS1</strong> for the country of USA</p>
+                                    <p><strong>OT1</strong> for other countries</p>"/>
                                     <span class="label label-warning hide" id="postcodeerror">You either did not enter a valid postcode or your format is wrong</span>
                                 </div>
                                 <div class="col-sm-4"><input type="button" id="checkpostcode" class="btn btn-primary btn-md" value="Check Postcode"></div>
