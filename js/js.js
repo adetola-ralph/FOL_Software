@@ -59,6 +59,10 @@ $(document).ready(function()
 		  input: '#postcode',
 		  button: '#checkpostcode',
 		  dropdown_class: 'form-control',
+		  onLookupTriggered: function()
+		  {
+			  
+		  },
 		  onAddressSelected: function(address)
 		  {
 			  var addressLines = [];
