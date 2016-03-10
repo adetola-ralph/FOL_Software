@@ -32,14 +32,14 @@
                             </div>
                             
                             <div class="form-group"> 
-                                <label for="firstname" class="control-label col-sm-2">FirstName:</label>
+                                <label for="firstname" class="control-label col-sm-2">First Name:</label>
                                 <div class="col-sm-10">
                                 	<input type="text" name="firstname" required class="form-control required" placeholder="FirstName"/>
                                 </div>
                             </div>
                             
                             <div class="form-group">
-                                <label for="lastname" class="control-label col-sm-2">LastName:</label>
+                                <label for="lastname" class="control-label col-sm-2">Last Name:</label>
                                 <div class="col-sm-10">
                                 	<input type="text" name="lastname" required class="form-control required" placeholder="Lastname"/>
                                 </div>
@@ -67,28 +67,28 @@
                         	
                             <legend>Contact Details</legend>
                             <div class="form-group">
-                                <label for="homeTelNum" class="control-label col-sm-2">Home Telephone:</label>
+                                <label for="homeTelNum" class="control-label col-sm-2">Home Num</label>
                                 <div class="col-sm-10">
                                 	<input type="tel" name="homeTelNum" class="form-control" placeholder="441234567890"/>
                                 </div>
                             </div>
                             
                             <div class="form-group">
-                                <label for="officeTelNum" class="control-label col-sm-2">Office Telephone:</label>
+                                <label for="officeTelNum" class="control-label col-sm-2">Office Num:</label>
                                 <div class="col-sm-10">
                                 	<input type="tel" name="officeTelNum"  class="form-control" placeholder="441234567890"/>
                                 </div>
 							</div>
                             
                             <div class="form-group">
-                                <label for="mobileTelNum" class="control-label col-sm-2">Mobile Telephone:</label>
+                                <label for="mobileTelNum" class="control-label col-sm-2">Mobile Num:</label>
                                 <div class="col-sm-10">
                                 	<input type="tel" name="mobileTelNum"  class="form-control" placeholder="441234567890"/>
                                 </div>
                             </div>
                             
                             <div class="form-group">
-                                <label for="email" class="control-label col-sm-2">Email Address:</label>
+                                <label for="email" class="control-label col-sm-2">Email:</label>
                                 <div class="col-sm-10">
                                 	<input type="email" name="email"  class="form-control" placeholder="name@email.com"/>
                                 </div>
@@ -106,40 +106,47 @@
                                 <div class="col-sm-6">
                                 	<input type="text" id="postcode" name="postcode" required class="form-control required" maxlength="8" data-toggle="popover" title="Enter the following for non-UK postcodes" data-trigger="hover focus" data-placement="bottom" data-html="true" data-content="<p><strong>AF1 1CA</strong> for an African country</p>
                                     <p><strong>EM1 1EA</strong> for a European, Asian & Middle Eastern Country</p>
-                                    <p><strongUS1</strong> for the country of USA</p>
-                                    <p><strong>OT1</strong> for other countries</p>"/>
-                                    <span class="label label-warning hide" id="postcodeerror">You either did not enter a valid postcode or your format is wrong</span>
+                                    <p><strong>US1</strong> for the country of USA</p>
+                                    <p><strong>OT1</strong> for other countries</p>" placeholder="Please enter your postcode"/>
+                                    
                                 </div>
                                 <div class="col-sm-4"><input type="button" id="checkpostcode" class="btn btn-primary btn-md" value="Check Postcode"></div>
                             </div>
+                            <div class="form-group">
+                            	<div class="col-sm-2">
+                                </div>
+                            	<span class="label label-warning hide col-sm-8" id="postcodeerror1">Invalid postcode, Wrong Format</span>
+                                <span class="label label-warning hide col-sm-8" id="postcodeerror2">Postcode not found</span>
+                                <span class="label label-warning hide col-sm-8" id="postcodeerror3">You haven't clicked on check postcode button</span>
+                            </div>
                             
-                            <div class="form-group hidden">
-                            	<label for="selectaddress" class="control-label col-sm-2">Select an address:</label>
+                            <div class="form-group" id="lookup_field">
+                            	<!--<label for="selectaddress" class="control-label col-sm-2">Select an address:</label>
                                 <div class="col-sm-10">
                                 	<select id="selectaddress" class="form-control">
-                                        <!--dynamically loaded select form-->
+                                        dynamically loaded select form
                                     </select>
-                                </div>
+                                </div>-->
                             </div>
                             
                             <div class="form-group">
                                 <label for="address" class="control-label col-sm-2">Address:</label>
                                 <div class="col-sm-10">
-                                	<input name="address" type="text" required  class="form-control required"/>
+                                	<input name="address" type="text" required  class="form-control required" id="first_line"/>
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label for="county" class="control-label col-sm-2">County:</label>
                                 <div class="col-sm-10">
-                                	<input type="text" name="county" required class="form-control required"/>
+                                	<input type="text" name="county" required class="form-control required" id="county"/>
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label for="city" class="control-label col-sm-2">City:</label>
                                 <div class="col-sm-10">
-                                	<input type="text" name="city" required class="form-control required"/>
+                                	<input type="text" name="city" required class="form-control required" id="post_town"/>
                                 </div>
                             </div>
                             
@@ -153,7 +160,7 @@
                             </div>
                             
                             <div class="form-group">
-                            	<label for="zonal_coordinator" class="control-label col-sm-2">Zonal Coordinator</label>
+                            	<label for="zonal_coordinator" class="control-label col-sm-2">Zone</label>
                                 <div class="col-sm-10">
                                 	<select id="zonal_coordinator" name="zonal_coordinator" class="form-control">
                                     </select>
@@ -161,7 +168,7 @@
                             </div>
                             
                             <div class="form-group">
-                            	<label for="area_supervisor" class="control-label col-sm-2">Area Supervisor</label>
+                            	<label for="area_supervisor" class="control-label col-sm-2">Area</label>
                                 <div class="col-sm-10">
                                 	<select id="area_supervisor" name="area_supervisor" class="form-control" >
                                     </select>
@@ -174,7 +181,7 @@
                         <fieldset>
                             <legend> ???</legend>
                             <div class="form-group">
-                                <label for="altarCallResponse" class="control-label col-sm-2">Response To Altar Call</label>
+                                <label for="altarCallResponse" class="control-label col-sm-2">Response</label>
                                 <div class="col-sm-10">
                                     <label><input type="radio" name="altarCallResponse" value="newconvert" required/> New Convert</label>
                                     <label><input type="radio" name="altarCallResponse" value="rededication" required/> Rededication</label>

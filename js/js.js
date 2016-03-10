@@ -15,11 +15,11 @@ $(document).ready(function()
 	});
 	
 	//Post code validator
-	$("#checkpostcode").on("click",function(){
+	/*$("#checkpostcode").on("click",function(){
 	var tryyu = checkPostCode();	
 		if(checkPostCode() == false)
 		{
-			$("#postcodeerror").removeClass("hide");
+			$("#postcodeerror1").removeClass("hide");
 		}
 		else
 		{
@@ -44,10 +44,64 @@ $(document).ready(function()
 				success: function(){
 					
 					}
-				});*/
+				});
 		}
-	});
+	});*/
 	
+	//JS code for the ideal-postcodes api
+	$('#lookup_field').setupPostcodeLookup({
+		  api_key: 'ak_ilmmvxk9PTsqzchJdhRVOvGU9IEnP',
+		  output_fields: {
+			//line_1: '#first_line',  
+			county: '#county',
+			post_town: '#post_town',
+		  },
+		  input: '#postcode',
+		  button: '#checkpostcode',
+		  dropdown_class: 'form-control',
+		  onAddressSelected: function(address)
+		  {
+			  var addressLines = [];
+			  if (address.line_1.length > 0) {
+				  addressLines.push(address.line_1)
+			  }
+			  if (address.line_2.length > 0) {
+				  addressLines.push(address.line_2)
+			  }
+			  if (address.line_3.length > 0) {
+				  addressLines.push(address.line_3)
+			  }
+			  $("#first_line").val(addressLines.join(", "));
+		  },
+		  onSearchCompleted: function(data)
+		  {
+			  var postcode = $("#postcode").val();
+			  var outcode = postcode.split(" ")[0];
+			  var otherOutcode = ["AF1","EM1","US1","OT1"];
+			  var otherOutcodeResult = otherOutcode.some(function(item, index, array){
+				  return outcode === item;				
+				});
+			  
+			  if(data.code===4040)
+			  {
+				  
+				  if(otherOutcodeResult)
+				  {
+					 //check db for zonal & area superss 
+				  }
+				  
+			  }
+			  else if(data.code===2000)
+			  {
+				  //get the area and zonal guys
+				  $("#postcode").addClass("valid");
+			  }
+			  
+		  }
+		  	  
+		});
+	
+	//for submit button
 	$("#submit").on("click",function(event){
 		var errorValue = 0;
 		$(".required").each(function(){
@@ -60,7 +114,8 @@ $(document).ready(function()
 		if(!($("#postcode").hasClass("valid")))
 		{
 			errorValue++;
-		}else if($("#postcode").hasClass("valid")){errorValue--;}
+			$("#postcodeerror3").removeClass("hide");
+		}else if($("#postcode").hasClass("valid")){errorValue--;$("#postcodeerror3").addClass("hide");}
 		
 		
 		if(errorValue>0)
@@ -94,6 +149,8 @@ $(document).ready(function()
 
 		}
 	});
+	
+	
 	
 });
 
