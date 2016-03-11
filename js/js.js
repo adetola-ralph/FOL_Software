@@ -54,15 +54,16 @@ $(document).ready(function()
 		  output_fields: {
 			//line_1: '#first_line',  
 			county: '#county',
+			postcode: "#postcode",
 			post_town: '#post_town',
 		  },
-		  input: '#postcode',
-		  button: '#checkpostcode',
-		  dropdown_class: 'form-control',
-		  onLookupTriggered: function()
+		  input_class: "",
+		  button_class: "btn btn-primary btn-md",
+		  dropdown_class: "form-control",
+		  /*onLookupTriggered: function()
 		  {
 			  
-		  },
+		  },*/
 		  onAddressSelected: function(address)
 		  {
 			  var addressLines = [];
@@ -99,6 +100,7 @@ $(document).ready(function()
 			  {
 				  //get the area and zonal guys
 				  $("#postcode").addClass("valid");
+				  
 			  }
 			  
 		  }

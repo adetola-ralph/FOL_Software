@@ -101,32 +101,9 @@
                 	<div class="col-sm-6">
                         <fieldset>
                             <legend>Address Details</legend>
-                            <div class="form-group">
-                                <label for="postcode" class="control-label col-sm-2">Postcode:</label>
-                                <div class="col-sm-6">
-                                	<input type="text" id="postcode" name="postcode" required class="form-control required" maxlength="8" data-toggle="popover" title="Enter the following for non-UK postcodes" data-trigger="hover focus" data-placement="bottom" data-html="true" data-content="<p><strong>AF1 1CA</strong> for an African country</p>
-                                    <p><strong>EM1 1EA</strong> for a European, Asian & Middle Eastern Country</p>
-                                    <p><strong>US1</strong> for the country of USA</p>
-                                    <p><strong>OT1</strong> for other countries</p>" placeholder="Please enter your postcode"/>
-                                    
-                                </div>
-                                <div class="col-sm-4"><input type="button" id="checkpostcode" class="btn btn-primary btn-md" value="Check Postcode"></div>
-                            </div>
-                            <div class="form-group">
-                            	<div class="col-sm-2">
-                                </div>
-                            	<span class="label label-warning hide col-sm-8" id="postcodeerror1">Invalid postcode, Wrong Format</span>
-                                <span class="label label-warning hide col-sm-8" id="postcodeerror2">Postcode not found</span>
-                                <span class="label label-warning hide col-sm-8" id="postcodeerror3">You haven't clicked on check postcode button</span>
-                            </div>
                             
                             <div class="form-group" id="lookup_field">
-                            	<!--<label for="selectaddress" class="control-label col-sm-2">Select an address:</label>
-                                <div class="col-sm-10">
-                                	<select id="selectaddress" class="form-control">
-                                        dynamically loaded select form
-                                    </select>
-                                </div>-->
+                            	
                             </div>
                             
                             <div class="form-group">
@@ -147,6 +124,13 @@
                                 <label for="city" class="control-label col-sm-2">City:</label>
                                 <div class="col-sm-10">
                                 	<input type="text" name="city" required class="form-control required" id="post_town"/>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="postcode" class="control-label col-sm-2">Postcode:</label>
+                                <div class="col-sm-10">
+                                	<input type="text" id="postcode" name="postcode" required class="form-control required"/>
                                 </div>
                             </div>
                             
