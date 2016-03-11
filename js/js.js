@@ -80,19 +80,43 @@ $(document).ready(function()
 		  },
 		  onSearchCompleted: function(data)
 		  {
-			  var postcode = $("#postcode").val();
+			  var postcode = $("#idpc_input").val();
 			  var outcode = postcode.split(" ")[0];
 			  var otherOutcode = ["AF1","EM1","US1","OT1"];
 			  var otherOutcodeResult = otherOutcode.some(function(item, index, array){
-				  return outcode === item;				
+				  return outcode.toUpperCase() === item.toUpperCase();				
 				});
 			  
 			  if(data.code===4040)
 			  {
-				  
+				  alert(otherOutcodeResult);
+				  alert(outcode);
 				  if(otherOutcodeResult)
 				  {
-					 //check db for zonal & area superss 
+					 //check db for zonal & area superss
+					 $("#postcode").addClass("valid");
+					 $.ajax({
+						url:"../php_ajax/getAreaZone.php",
+						type:"GET",
+						data:{postcode:outcode},
+						dataType:"",
+						success: function(data){
+							//returns the format {"zone":"??","zonal_coor":"??","area":"??","area_sup":"??"}
+							//alert(data);
+							//console.log(data);
+							
+							var obj = jQuery.parseJSON(data);
+							var zone = [];
+							zone[0] = obj.zone;
+							zone[1] = obj.zonal_coor;
+							var area = [];
+							area[0] = obj.area;
+							area[1] = obj.area_sup;
+							
+							$('#zonal_coordinator').append(new Option(zone[1],zone[0]));
+							$('#area_supervisor').append(new Option(area[1],area[0]));
+							}
+						}); 
 				  }
 				  
 			  }
@@ -100,6 +124,27 @@ $(document).ready(function()
 			  {
 				  //get the area and zonal guys
 				  $("#postcode").addClass("valid");
+				  $.ajax({
+						url:"../php_ajax/getAreaZone.php",
+						type:"GET",
+						data:{postcode:outcode},
+						dataType:"",
+						success: function(data){
+							//returns the format {"zone":"??","zonal_coor":"??","area":"??","area_sup":"??"}
+							//alert(data);
+							
+							var obj = jQuery.parseJSON(data);
+							var zone = [];
+							zone[0] = obj.zone;
+							zone[1] = obj.zonal_coor;
+							var area = [];
+							area[0] = obj.area;
+							area[1] = obj.area_sup;
+							
+							$('#zonal_coordinator').append(new Option(zone[1],zone[0]));
+							$('#area_supervisor').append(new Option(area[1],area[0]));
+							}
+						});
 				  
 			  }
 			  
@@ -194,4 +239,14 @@ function showObjectjQuery(obj) {
     result += "<option value=\""+v.country_code + "\">" + v.country_name + "</option>";
   });
   return result;
+}
+
+function getZoneArea(outcode)
+{
+	
+}
+
+function getArea()
+{
+	
 }

@@ -130,7 +130,10 @@
                             <div class="form-group">
                                 <label for="postcode" class="control-label col-sm-2">Postcode:</label>
                                 <div class="col-sm-10">
-                                	<input type="text" id="postcode" name="postcode" required class="form-control required"/>
+                                	<input type="text" id="postcode" name="postcode" required class="form-control required" data-toggle="popover" title="Enter the following for non-UK postcodes" data-trigger="hover focus" data-placement="bottom" data-html="true" data-content="<p><strong>AF1 1CA</strong> for an African country</p>
+                                    <p><strong>EM1 1EA</strong> for a European, Asian & Middle Eastern Country</p>
+                                    <p><strong>US1</strong> for the country of USA</p>
+                                    <p><strong>OT1</strong> for other countries</p>"/>
                                 </div>
                             </div>
                             
