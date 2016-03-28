@@ -13,37 +13,46 @@ class convertHelper
 		$this->conn = $db->get_connection();	
 	}
 		
-	public static function getAll()
+	public function getAll()
 	{
-		$query = "SELECT * FROM converts";
+		$convertArray = array();
+		
+		$query = "SELECT COUNT(*) FROM converts";
 		$stmt = $this->conn->prepare($query);
 		$stmt->execute();
-		$convertArray = array();
 		
 		if($stmt->fetchColumn() > 0)
 		{
-			$convertArray = $stmt->fetchAll(PDO::FETCH_CLASS, "Convert");
-			return $convertArray;
+			$query1 = "SELECT * FROM converts";
+			$stmt1 = $this->conn->prepare($query1);
+			$stmt1->execute();
+			
+			$convertArray1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+			return $convertArray1;
 		}else{return null;}
 	}
 	
 	public function getConvert($id)
 	{
-		$query = "SELECT * FROM converts WHERE id = ?";
+		$query = "SELECT count(*) FROM converts WHERE id = ?";
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindParam("i",$id);
 		$stmt->execute();
 		
 		if($stmt->fetchColumn() == 1)
 		{
-			return $stmt->fetch(PDO::FETCH_CLASS, "Convert");
+			$query1 = "SELECT * FROM converts WHERE id = ?";
+			$stmt1 = $this->conn->prepare($query1);
+			$stmt1->bindParam("i",$id);
+			$stmt1->execute();
+			return $stmt1->fetch(PDO::FETCH_ASSOC);
 		}else{return null;}
 		
 	}
 	
 	public static function getByYear($year)
 	{
-		$query = "SELECT * FROM converts WHERE YEAR(date) = ?";
+		$query = "SELECT COUNT(*) FROM converts WHERE YEAR(date) = ?";
 		$stmt = $this->conn->prepare($query);
 		$stmt->bindParam("i",$year);
 		$stmt->execute();
@@ -51,7 +60,12 @@ class convertHelper
 		
 		if($stmt->fetchColumn() > 0)
 		{
-			$convertArray = $stmt->fetchAll(PDO::FETCH_CLASS, "Convert");
+			$query1 = "SELECT * FROM converts WHERE YEAR(date) = ?";
+			$stmt1 = $this->conn->prepare($query1);
+			$stmt1->bindParam("i",$year);
+			$stmt1->execute();
+			
+			$convertArray = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 			return $convertArray;
 		}else{return null;}
 	}
