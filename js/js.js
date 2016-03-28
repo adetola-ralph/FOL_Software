@@ -159,7 +159,16 @@ $(document).ready(function()
 			if($(this).val().length === 0)
 			{
 			  errorValue++;
-			}	
+			  $(this).parents(".form-group").addClass("has-error");
+			}
+			else
+			{
+				
+				if(($(this).parents(".form-group").hasClass("has-error")) && $(this).val().length !== 0 )
+				{
+					$(this).parents(".form-group").removeClass("has-error");
+				}
+			}
 		});
 		
 		if(!($("#postcode").hasClass("valid")))
@@ -168,7 +177,7 @@ $(document).ready(function()
 			$("#postcodeerror3").removeClass("hide");
 		}else if($("#postcode").hasClass("valid")){errorValue--;$("#postcodeerror3").addClass("hide");}
 		
-		
+		alert(errorValue);
 		if(errorValue>0)
 		{
 			event.preventDefault();
