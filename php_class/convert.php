@@ -1,7 +1,7 @@
 <?php
 class Convert
 {
-	private $id;
+	//private $id;
 	public $title;
 	public $firstname;
 	public $lastname;
