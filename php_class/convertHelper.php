@@ -43,26 +43,26 @@ class convertHelper
 		{
 			$query1 = "SELECT * FROM converts WHERE id = ?";
 			$stmt1 = $this->conn->prepare($query1);
-			$stmt1->bindParam("i",$id);
+			$stmt1->bindParam("1",$id);
 			$stmt1->execute();
 			return $stmt1->fetch(PDO::FETCH_ASSOC);
 		}else{return null;}
 		
 	}
 	
-	public static function getByYear($year)
+	public function getByYear($year)
 	{
-		$query = "SELECT COUNT(*) FROM converts WHERE YEAR(date) = ?";
+		$query = "SELECT COUNT(*) FROM converts WHERE YEAR(regDate) = ?";
 		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam("i",$year);
+		$stmt->bindParam("1",$year);
 		$stmt->execute();
 		$convertArray = array();
 		
 		if($stmt->fetchColumn() > 0)
 		{
-			$query1 = "SELECT * FROM converts WHERE YEAR(date) = ?";
+			$query1 = "SELECT * FROM converts WHERE YEAR(regDate) = ?";
 			$stmt1 = $this->conn->prepare($query1);
-			$stmt1->bindParam("i",$year);
+			$stmt1->bindParam("1",$year);
 			$stmt1->execute();
 			
 			$convertArray = $stmt1->fetchAll(PDO::FETCH_ASSOC);
