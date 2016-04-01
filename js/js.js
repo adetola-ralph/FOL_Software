@@ -93,7 +93,7 @@ $(document).ready(function()
 				  alert(outcode);
 				  if(otherOutcodeResult)
 				  {
-					 //check db for zonal & area superss
+					 //check db for zonal & area couns
 					 $("#postcode").addClass("valid");
 					 $.ajax({
 						url:"../php_ajax/getAreaZone.php",
@@ -101,7 +101,7 @@ $(document).ready(function()
 						data:{postcode:outcode},
 						dataType:"",
 						success: function(data){
-							//returns the format {"zone":"??","zonal_coor":"??","area":"??","area_sup":"??"}
+							//returns the format {"zone":"??","zonal_coor":"??","area":"??","area_coun":"??"}
 							//alert(data);
 							//console.log(data);
 							
@@ -111,10 +111,10 @@ $(document).ready(function()
 							zone[1] = obj.zonal_coor;
 							var area = [];
 							area[0] = obj.area;
-							area[1] = obj.area_sup;
+							area[1] = obj.area_coun;
 							
 							$('#zonal_coordinator').append(new Option(zone[1],zone[0]));
-							$('#area_supervisor').append(new Option(area[1],area[0]));
+							$('#area_counsellor').append(new Option(area[1],area[0]));
 							}
 						}); 
 				  }
@@ -130,7 +130,7 @@ $(document).ready(function()
 						data:{postcode:outcode},
 						dataType:"",
 						success: function(data){
-							//returns the format {"zone":"??","zonal_coor":"??","area":"??","area_sup":"??"}
+							//returns the format {"zone":"??","zonal_coor":"??","area":"??","area_coun":"??"}
 							//alert(data);
 							
 							var obj = jQuery.parseJSON(data);
@@ -139,10 +139,10 @@ $(document).ready(function()
 							zone[1] = obj.zonal_coor;
 							var area = [];
 							area[0] = obj.area;
-							area[1] = obj.area_sup;
+							area[1] = obj.area_coun;
 							
 							$('#zonal_coordinator').append(new Option(zone[1],zone[0]));
-							$('#area_supervisor').append(new Option(area[1],area[0]));
+							$('#area_counsellor').append(new Option(area[1],area[0]));
 							}
 						});
 				  
@@ -159,16 +159,16 @@ $(document).ready(function()
 			if($(this).val().length === 0)
 			{
 			  errorValue++;
-			  $(this).parents(".form-group").addClass("has-error");
+			  //$(this).parents(".form-group").addClass("has-error");
 			}
-			else
+			/*else
 			{
 				
 				if(($(this).parents(".form-group").hasClass("has-error")) && $(this).val().length !== 0 )
 				{
 					$(this).parents(".form-group").removeClass("has-error");
 				}
-			}
+			}*/
 		});
 		
 		if(!($("#postcode").hasClass("valid")))
@@ -177,7 +177,7 @@ $(document).ready(function()
 			$("#postcodeerror3").removeClass("hide");
 		}else if($("#postcode").hasClass("valid")){errorValue--;$("#postcodeerror3").addClass("hide");}
 		
-		alert(errorValue);
+		//alert(errorValue);
 		if(errorValue>0)
 		{
 			event.preventDefault();
