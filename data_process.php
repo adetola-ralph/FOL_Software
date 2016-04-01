@@ -21,12 +21,12 @@ require("php_class/convertHelper.php");
 	$altarCallResponse = $_POST["altarCallResponse"];
 	$prayerPoints = $_POST["prayerPoints"];
 	$regDate = $_POST["regDate"];
-	$area_supers = $_POST["area_supervisor"];
+	$area_couns = $_POST["area_counsellor"];
     $zonal_coor = $_POST["zonal_coordinator"];
-	/*$area_supers = 1;
+	/*$area_couns = 1;
     $zonal_coor = 1;*/
 	
-	$c1 = new Convert($title,$firstname,$lastname,$agerange,$homeTelNum,$officeTelNum,$mobileTelNum,$email,$postcode,$address,$county,$city,$country,$altarCallResponse,$prayerPoints,$regDate,$area_supers,$zonal_coor);
+	$c1 = new Convert($title,$firstname,$lastname,$agerange,$homeTelNum,$officeTelNum,$mobileTelNum,$email,$postcode,$address,$county,$city,$country,$altarCallResponse,$prayerPoints,$regDate,$area_couns,$zonal_coor);
 	
 	$ch = new convertHelper();
 	$result = $ch->insertConvert($c1);

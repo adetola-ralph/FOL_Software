@@ -155,9 +155,9 @@
                             </div>
                             
                             <div class="form-group">
-                            	<label for="area_supervisor" class="control-label col-sm-2">Area</label>
+                            	<label for="area_counsellor" class="control-label col-sm-2">Area</label>
                                 <div class="col-sm-10">
-                                	<select id="area_supervisor" name="area_supervisor" class="form-control" >
+                                	<select id="area_counsellor" name="area_counsellor" class="form-control" >
                                     </select>
                                 </div>
                             </div>
