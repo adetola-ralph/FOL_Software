@@ -4,7 +4,7 @@
 	$db = new MyDatabase("localhost","foldb","root","");
 	$conn = $db->get_connection();
 	
-	$query = "SELECT country_code,country_name FROM apps_countries";
+	$query = "SELECT country_code,country_name FROM apps_countries ORDER BY id ASC";
 	$sth = $conn->query($query);
 	$result = $sth->fetchAll(PDO::FETCH_ASSOC);
 	
