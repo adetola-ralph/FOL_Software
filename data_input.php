@@ -1,6 +1,9 @@
-<?php include_once("layout/header.php");?>
+<?php
+	$page_title = "Convert Data Input Page"; 
+	include_once("layout/header.php");
+?>
       <div>
-      		<form method="post" role="form" class="form-horizontal" id="form" >
+      		<form method="" role="form" class="form-horizontal" id="form" >
 				<div class="row">
                     <div class="alert alert-warning hidden"  id="alert">
                     	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

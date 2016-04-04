@@ -2,6 +2,10 @@
 require("php_class/convert.php");
 require("php_class/convertHelper.php");
 
+	if(!isset($_POST["title"]))
+	{
+		header("Location:index.php");
+	}
 //if(isset($_GET["id"]))
 //{
 	$id;

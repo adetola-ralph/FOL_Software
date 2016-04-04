@@ -1,4 +1,6 @@
 <?php
+//echo($_SERVER["PHP_SELF"]);
+
 echo("<!DOCTYPE html>
 <html lang=\"en\">
 	<head>
@@ -19,7 +21,7 @@ echo("<!DOCTYPE html>
 	</head>
 	
 	<body>
-		<nav class = \"navbar navbar-default\" role = \"navigation\">
+		<nav class = \"navbar navbar-default navbar-fixed-top\" role = \"navigation\">
 			<div class=\"container\">
 				<div class=\"navbar-header\">
 					<a class=\"navbar-brand\" href=\"#\"> 
@@ -36,7 +38,7 @@ echo("<!DOCTYPE html>
 			<header>
 			</header>
 			<div class=\"page-header\">
-				<h2>Convert Data Input Page</h2>      
+				<h2>".$page_title."</h2>      
 			</div>
 	");
 ?>
