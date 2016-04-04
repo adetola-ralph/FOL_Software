@@ -9,7 +9,10 @@
 	// create a file pointer connected to the output stream
 	$output = fopen('php://output', 'w');
 	
-	
+	$_dateObj = $_POST["select_date"];
+	$_obj = explode("/",$_dateObj);
+	$_year = $_obj[0];
+	$_month = $_obj[1];
  
 	//$ch = new convertHelper();
 	//$convertArray = $ch->getAll();
@@ -32,7 +35,8 @@
 	$db = new MyDatabase("localhost","foldb","root","");
  	$conn = $db->get_connection();
 	
-	$query = "SELECT converts.id AS ConvertID, converts.title AS ConvertTitle, converts.firstname AS ConvertFirstName, converts.lastname AS ConvertLastName, converts.address AS ConvertAddress, converts.city AS ConvertCity, converts.county AS ConvertCounty, converts.postcode AS ConvertPostalCode, apps_countries.country_name AS ConvertCountry, converts.altarCallResponse AS ConvertAlterCallResType, converts.regDate AS ConvertDateOfNewBirth, area_couns.name AS ConvertFollowUpPerson, area_couns.phoneNo AS ConvertFolContNo, zonal_coor.phoneNo AS ConverZonalContTNo FROM converts Inner Join apps_countries ON apps_countries.country_code = converts.country Inner Join area_couns ON area_couns.area = converts.area_couns Inner Join zonal_coor ON zonal_coor.zone = converts.zonal_coor";
+	
+	$query = "SELECT converts.id AS ConvertID, converts.title AS ConvertTitle, converts.firstname AS ConvertFirstName, converts.lastname AS ConvertLastName, converts.address AS ConvertAddress, converts.city AS ConvertCity, converts.county AS ConvertCounty, converts.postcode AS ConvertPostalCode, apps_countries.country_name AS ConvertCountry, converts.altarCallResponse AS ConvertAlterCallResType, converts.regDate AS ConvertDateOfNewBirth, area_couns.name AS ConvertFollowUpPerson, area_couns.phoneNo AS ConvertFolContNo, zonal_coor.phoneNo AS ConverZonalContTNo FROM converts Inner Join apps_countries ON apps_countries.country_code = converts.country Inner Join area_couns ON area_couns.area = converts.area_couns Inner Join zonal_coor ON zonal_coor.zone = converts.zonal_coor WHERE YEAR(regDate) = {$_year} AND MONTH(regDate) = {$_month} ORDER BY ConvertID ASC";
 	$stmt = $conn->prepare($query);
 	$stmt->execute();
 	
