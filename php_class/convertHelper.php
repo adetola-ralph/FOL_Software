@@ -1,6 +1,6 @@
 <?php
-include("/configs/db.php");
-require_once("convert.php");
+	include("configs/db.php");
+	include_once("convert.php");
 
 class convertHelper
 {
@@ -9,7 +9,7 @@ class convertHelper
 	
 	public function __construct()
 	{
-		$db = new MyDatabase("localhost","foldb","root","");
+		$db = new MyDatabase("localhost","foldb","root","root");
 		$this->conn = $db->get_connection();	
 	}
 		

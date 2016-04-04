@@ -1,7 +1,7 @@
 <?php
 	include("../configs/db.php");
 	
-	$db = new MyDatabase("localhost","foldb","root","");
+	$db = new MyDatabase("localhost","foldb","root","root");
 	$conn = $db->get_connection();
 	
 	$query = "SELECT country_code,country_name FROM apps_countries ORDER BY id ASC";

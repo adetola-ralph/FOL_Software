@@ -5,7 +5,7 @@ $(document).ready(function()
 	
 	//Ajax to load country into select form
 	$.ajax({
-	url:"../php_ajax/getcountry.php",
+	url:"php_ajax/getcountry.php",
 	type: "GET",
 	dataType:"json",
 	success:function( json ){
@@ -123,8 +123,9 @@ $(document).ready(function()
 				  {
 					 //check db for zonal & area couns
 					 $("#postcode").addClass("valid");
+					 $("#postcode").val(postcode.toUpperCase());
 					 $.ajax({
-						url:"../php_ajax/getAreaZone.php",
+						url:"php_ajax/getAreaZone.php",
 						type:"GET",
 						data:{postcode:outcode},
 						dataType:"",
@@ -153,7 +154,7 @@ $(document).ready(function()
 				  //get the area and zonal guys
 				  $("#postcode").addClass("valid");
 				  $.ajax({
-						url:"../php_ajax/getAreaZone.php",
+						url:"php_ajax/getAreaZone.php",
 						type:"GET",
 						data:{postcode:outcode},
 						dataType:"",
@@ -219,7 +220,7 @@ $(document).ready(function()
             alert($("#form").serialize());
             console.log($("#form").serialize());
 		   $.ajax({
-				 url:"../data_process.php",
+				 url:"data_process.php",
 				 type:"POST",
 				 data:$("#form").serialize(),
 				 dataType:"",
@@ -281,3 +282,4 @@ function showCountryjQuery(obj) {
   });
   return result;
 }
+

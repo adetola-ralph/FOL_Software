@@ -1,0 +1,12 @@
+{
+    "name": "oreofe/fol_software",
+    "description": "Festival of life new convert entry software",
+    "authors": [
+        {
+            "name": "Olutola Oreofeoluwapo",
+            "email": "oreofe.olutola@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
