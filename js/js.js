@@ -210,7 +210,9 @@ $(document).ready(function()
 		}
 	});
 	
-	
+	if (!Modernizr.svg) {
+	  $(".navbar-brand img").attr("src", "../images/logo.png");
+	}
 	
 });
 
