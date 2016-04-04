@@ -15,14 +15,29 @@ echo("<!DOCTYPE html>
 		<script src='../js/js.js' type='text/javascript'></script>
 		<script src='../js/postcodes.min.js' type='text/javascript'></script>
 		<script src=\"../js/bootstrap.min.js\" type='text/javascript'></script>
+		<script type=\"text/javascript\" src=\"../js/modenizr.js\"></script>
 	</head>
 	
 	<body>
+		<nav class = \"navbar navbar-default\" role = \"navigation\">
+			<div class=\"container\">
+				<div class=\"navbar-header\">
+					<a class=\"navbar-brand\" href=\"#\"> 
+                        <img src=\"../images/logo.svg\" alt=\"logo\" height=\"70\" width=\"70\"/>
+                   </a> 
+					<a class=\"navbar-brand\" href=\"#\"> 
+                        RCCG FOL Counselling Team
+                   </a> 
+
+				</div>
+			</div>
+		</nav>
 		<div class=\"container\">
 			<header>
 			</header>
 			<div class=\"page-header\">
-				<h1>Example Page Header</h1>      
+				<h2>Convert Data Input Page</h2>      
 			</div>
 	");
 ?>
+
