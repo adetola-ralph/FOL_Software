@@ -9,10 +9,38 @@ $(document).ready(function()
 	type: "GET",
 	dataType:"json",
 	success:function( json ){
-			var countryselect = showObjectjQuery(json);
+			var countryselect = showCountryjQuery(json);
 			$("#country").html(countryselect);
 		}
 	});
+	
+	//Ajax to load dates in the database based on the events
+	$.ajax({
+		url:"../php_ajax/getDate.php",
+		type:"GET",
+		dataType:"json",
+		success:function(json){
+			for(var i=0;i<json.length;i++)
+			{
+				//var dateObj = jQuery.parseJSON(json[i]); //{"year":"xxxx","month":"xx"}
+				var _month = json[i].month;
+				var _year = json[i].year;
+				
+				$("#select_date").append(new Option(_year+"/"+_month,_year+"/"+_month));
+			}
+		}
+		});
+		
+		//print.php submit button
+		$("#dateSubmit").on("click", function(event){
+				//event.preventDefault();
+				if($("#select_date").val() == "0")
+				{
+					event.preventDefault();
+					alert("Please select a date");
+					$("#select_date").parents(".form-group").addClass("has-error");
+				}
+			});
 	
 	//Post code validator
 	/*$("#checkpostcode").on("click",function(){
@@ -210,6 +238,8 @@ $(document).ready(function()
 		}
 	});
 	
+	
+	//Modernizr test for svg image support
 	if (!Modernizr.svg) {
 	  $(".navbar-brand img").attr("src", "../images/logo.png");
 	}
@@ -244,20 +274,10 @@ function checkPostCode()
 /**
 *function that converts json into options to be loaded into the select input form
 */
-function showObjectjQuery(obj) {
+function showCountryjQuery(obj) {
   var result = "";
   $.each(obj, function(k, v) {  
     result += "<option value=\""+v.country_code + "\">" + v.country_name + "</option>";
   });
   return result;
-}
-
-function getZoneArea(outcode)
-{
-	
-}
-
-function getArea()
-{
-	
 }
