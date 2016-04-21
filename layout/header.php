@@ -28,7 +28,7 @@ echo("<!DOCTYPE html>
                         <img src=\"../images/logo.svg\" alt=\"logo\" height=\"70\" width=\"70\"/>
                    </a> 
 					<a class=\"navbar-brand\" href=\"#\"> 
-                        RCCG FOL Counselling Team
+                        FOL Counselling Team
                    </a> 
 
 				</div>
