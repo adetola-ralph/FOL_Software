@@ -85,8 +85,10 @@ $(document).ready(function()
 			postcode: "#postcode",
 			post_town: '#post_town',
 		  },
-		  input_class: "",
-		  button_class: "btn btn-primary btn-md",
+		  /*input_class: "",
+		  button_class: "btn btn-primary btn-md",*/
+          button: '#customButton',
+          input: '#customInput',
 		  dropdown_class: "form-control",
 		  /*onLookupTriggered: function()
 		  {
@@ -108,7 +110,7 @@ $(document).ready(function()
 		  },
 		  onSearchCompleted: function(data)
 		  {
-			  var postcode = $("#idpc_input").val();
+			  var postcode = $("#customInput").val();
 			  var outcode = postcode.split(" ")[0];
 			  var otherOutcode = ["AF1","EM1","US1","OT1"];
 			  var otherOutcodeResult = otherOutcode.some(function(item, index, array){
@@ -117,7 +119,7 @@ $(document).ready(function()
 			  
 			  if(data.code===4040)
 			  {
-				  alert(otherOutcodeResult);
+				  //alert(otherOutcodeResult);
 				  alert(outcode);
 				  if(otherOutcodeResult)
 				  {
@@ -187,16 +189,16 @@ $(document).ready(function()
 			if($(this).val().length === 0)
 			{
 			  errorValue++;
-			  //$(this).parents(".form-group").addClass("has-error");
+			  $(this).parents(".form-group").addClass("has-error");
 			}
-			/*else
+			else
 			{
 				
 				if(($(this).parents(".form-group").hasClass("has-error")) && $(this).val().length !== 0 )
 				{
 					$(this).parents(".form-group").removeClass("has-error");
 				}
-			}*/
+			}
 		});
 		
 		if(!($("#postcode").hasClass("valid")))
