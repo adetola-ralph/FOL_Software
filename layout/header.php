@@ -24,10 +24,10 @@ echo("<!DOCTYPE html>
 		<nav class = \"navbar navbar-default navbar-fixed-top\" role = \"navigation\">
 			<div class=\"container\">
 				<div class=\"navbar-header\">
-					<a class=\"navbar-brand\" href=\"#\"> 
+					<a class=\"navbar-brand\" href=\"../index.php\"> 
                         <img src=\"../images/logo.svg\" alt=\"logo\" height=\"70\" width=\"70\"/>
                    </a> 
-					<a class=\"navbar-brand\" href=\"#\"> 
+					<a class=\"navbar-brand\" href=\"../index.php\"> 
                         FOL Counselling Team
                    </a> 
 
