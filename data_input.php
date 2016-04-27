@@ -4,13 +4,13 @@
 ?>
       <div>
             <div class="row">
-                <div class="col-sm-12 alert alert-warning">
-                    <span><strong>Form obects with <i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i>  and all dropdown objects are all required to be filled</span></strong>
+                <div class="col-sm-12 alert alert-warning text-center">
+                    <span class=""><strong>Form obects with <i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i>  and all dropdown objects are all required to be filled</span></strong>
                 </div>
             </div>
       		<form role="form" class="form-horizontal" id="form" >
 				<div class="row">
-                    <div class="alert alert-warning hidden"  id="alert">
+                    <div class="alert alert-danger hidden"  id="alert">
                     	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     	You have 1 or more issues to be dealt with
                     </div>
