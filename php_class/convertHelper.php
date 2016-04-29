@@ -5,7 +5,7 @@ require_once("convert.php");
 class convertHelper
 {
 	
-	private $conn;
+	public $conn;
 	
 	public function __construct()
 	{
@@ -53,7 +53,9 @@ class convertHelper
 	public function getByYear($year)
 	{
 		$query = "SELECT COUNT(*) FROM converts WHERE YEAR(regDate) = ?";
+		
 		$stmt = $this->conn->prepare($query);
+		//var_dump($this->conn);
 		$stmt->bindParam("1",$year);
 		$stmt->execute();
 		$convertArray = array();
@@ -163,4 +165,6 @@ class convertHelper
 	}
 }
 
+/*$chy = new convertHelper();
+var_dump(get_class_methods($chy->conn));*/
 ?>

@@ -8,7 +8,7 @@
                     <span class=""><strong>Form obects with <i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i>  and all dropdown objects are all required to be filled</span></strong>
                 </div>
             </div>
-      		<form role="form" class="form-horizontal" id="form" >
+      		<form role="form" class="form-horizontal" id="form" method="post">
 				<div class="row">
                     <div class="alert alert-danger hidden"  id="alert">
                     	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -59,8 +59,8 @@
                             <div class="form-group">
                                 <label for="agerange" class="control-label col-sm-2">Age Range:</label>
                                 <div class="col-sm-10">
-                                    <select name="agerange" required class="form-control required">
-                                        <option value>Select age</option>
+                                    <select id="agerange" name="agerange" required class="form-control required">
+                                        <!--<option value="0">Select an age</option>-->
                                         <option value="0-17">0 to 17</option>
                                         <option value="18-24">18 to 24</option>
                                         <option value="25-34">25 to 34</option>
@@ -178,7 +178,7 @@
                             	<label for="zonal_coordinator" class="control-label col-sm-2">Zone</label>
                                 <div class="col-sm-10">
                                 	<select id="zonal_coordinator" name="zonal_coordinator" required class="form-control required">
-                                        <option value>Zonal Coordinator</option>
+                                        <!--<option value>Zonal Coordinator</option>-->
                                     </select>
                                 </div>
                             </div>
@@ -187,7 +187,7 @@
                             	<label for="area_counsellor" class="control-label col-sm-2">Area</label>
                                 <div class="col-sm-10">
                                 	<select id="area_counsellor" name="area_counsellor" required class="form-control required" >
-                                        <option value>Area Counsellor</option>
+                                        <!--<option value>Area Counsellor</option>-->
                                     </select>
                                 </div>
                             </div>
