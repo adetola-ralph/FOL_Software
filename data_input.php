@@ -1,5 +1,6 @@
 <?php
-	$page_title = "Convert Data Input Page"; 
+	include_once("php_class/auth.php");
+	$page_title = "Convert Data Input Page";
 	include_once("layout/header.php");
 ?>
       <div>
@@ -14,13 +15,13 @@
                     	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     	You have 1 or more issues to be dealt with
                     </div>
-                </div>            
-                
+                </div>
+
             	<div class="row"><!--beginning of personal details-->
                 	<div class="col-sm-6">
                         <fieldset>
                             <legend>Personal Details</legend>
-                            
+
                             <div class="form-group">
                                 <label for="title" class="control-label col-sm-2">Title:</label>
                                 <div class="col-sm-10">
@@ -38,8 +39,8 @@
                                     </select>
                                 </div>
                             </div>
-                            
-                            <div class="form-group"> 
+
+                            <div class="form-group">
                                 <label for="firstname" class="control-label col-sm-2">First Name:</label>
                                 <div class="col-sm-10">
                                 	<input type="text" name="firstname" required class="form-control required" placeholder="FirstName" aria-describedby="inputRequired"/>
@@ -47,7 +48,7 @@
                                     <!--<span id="inputRequired" class="sr-only">(required)</span>-->
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="lastname" class="control-label col-sm-2">Last Name:</label>
                                 <div class="col-sm-10">
@@ -55,7 +56,7 @@
                                     <span class="glyphicon glyphicon-asterisk form-control-feedback" aria-hidden="true"></span>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="agerange" class="control-label col-sm-2">Age Range:</label>
                                 <div class="col-sm-10">
@@ -69,15 +70,15 @@
                                         <option value="51-60">51 to 60</option>
                                         <option value="61+">61+</option>
                                     </select>
-                                    
+
                                 </div>
                             </div>
                         </fieldset>
                     </div><!--end of personal details-->
-                    
+
                     <div class="col-sm-6"><!--beginning of contact details-->
                         <fieldset>
-                        	
+
                             <legend>Contact Details</legend>
                             <div class="form-group">
                                 <label for="homeTelNum" class="control-label col-sm-2">Home Num</label>
@@ -85,21 +86,21 @@
                                 	<input type="tel" name="homeTelNum" class="form-control" placeholder="441234567890"/>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="officeTelNum" class="control-label col-sm-2">Office Num:</label>
                                 <div class="col-sm-10">
                                 	<input type="tel" name="officeTelNum"  class="form-control" placeholder="441234567890"/>
                                 </div>
 							</div>
-                            
+
                             <div class="form-group">
                                 <label for="mobileTelNum" class="control-label col-sm-2">Mobile Num:</label>
                                 <div class="col-sm-10">
                                 	<input type="tel" name="mobileTelNum"  class="form-control" placeholder="441234567890"/>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="email" class="control-label col-sm-2">Email:</label>
                                 <div class="col-sm-10">
@@ -109,12 +110,12 @@
                         </fieldset>
                         </div>
                 </div><!--end of contact details-->
-                
+
                 <div class="row"><!--beginning of Address Details-->
                 	<div class="col-sm-6">
                         <fieldset>
                             <legend>Address Details</legend>
-                            
+
                             <div class="col-sm-8 form-group">
                             	<input type="text" id="customInput" name="postcode" required class="form-control required customInput" data-toggle="popover" title="Enter the following for non-UK postcodes" data-trigger="hover focus" data-placement="bottom" data-html="true" data-content="<p><strong>AF1 1CA</strong> for an African country</p>
                                     <p><strong>EM1 1EA</strong> for a European, Asian & Middle Eastern Country</p>
@@ -128,10 +129,10 @@
                              </br>
                              <div class="form-group">
                                 <div class="col-sm-10 form-group" id="lookup_field">
-                                    
+
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="address" class="control-label col-sm-2">Address:</label>
                                 <div class="col-sm-10">
@@ -139,7 +140,7 @@
                                     <span class="glyphicon glyphicon-asterisk form-control-feedback" aria-hidden="true"></span>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="county" class="control-label col-sm-2">County:</label>
                                 <div class="col-sm-10">
@@ -147,7 +148,7 @@
                                     <span class="glyphicon glyphicon-asterisk form-control-feedback" aria-hidden="true"></span>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="city" class="control-label col-sm-2">City:</label>
                                 <div class="col-sm-10">
@@ -155,7 +156,7 @@
                                     <span class="glyphicon glyphicon-asterisk form-control-feedback" aria-hidden="true"></span>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="postcode" class="control-label col-sm-2">Postcode:</label>
                                 <div class="col-sm-10">
@@ -163,17 +164,17 @@
                                     <span class="glyphicon glyphicon-asterisk form-control-feedback" aria-hidden="true"></span>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="country" class="control-label col-sm-2">Country:</label>
                                 <div class="col-sm-10">
                                     <select name="country" id="country" class="form-control">
                                         <!--dynamically loaded select form-->
                                         <option value>Country</option>
-                                    </select> 
+                                    </select>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                             	<label for="zonal_coordinator" class="control-label col-sm-2">Zone</label>
                                 <div class="col-sm-10">
@@ -182,7 +183,7 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                             	<label for="area_counsellor" class="control-label col-sm-2">Area</label>
                                 <div class="col-sm-10">
@@ -193,7 +194,7 @@
                             </div>
                         </fieldset>
                 	</div><!--end of address details-->
-                
+
                     <div class="col-sm-6"><!--beginning of ???-->
                         <fieldset>
                             <legend> ???</legend>
@@ -204,14 +205,14 @@
                                     <label><input type="radio" name="altarCallResponse" value="rededication" required /> Rededication</label>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="prayerPoint" class="control-label col-sm-2">Prayer Points</label>
                                 <div class="col-sm-10">
                                 	<textarea name="prayerPoints" class="form-control" rows="5"></textarea>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                             	<label for="regDate" class="control-label col-sm-2">Date</label>
                                 <div class="col-sm-10">
@@ -221,7 +222,7 @@
                         </fieldset>
                     </div><!--end of ???-->
                 </div>
-                
+
                 <div class="row"><!--beginning of submit-->
                 	<div class="col-sm-4">
                     </div>

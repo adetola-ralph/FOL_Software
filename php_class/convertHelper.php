@@ -36,7 +36,7 @@ class convertHelper
 	{
 		$query = "SELECT count(*) FROM converts WHERE id = ?";
 		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam("i",$id);
+		$stmt->bindParam("1",$id);
 		$stmt->execute();
 		
 		if($stmt->fetchColumn() == 1)

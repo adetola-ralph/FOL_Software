@@ -1,4 +1,9 @@
 <?php
+include_once("php_class/auth.php");
+if($_SERVER["HTTP_REFERER"] !== "http://folsoftware.local/data_input.php" || !isset($_SERVER["HTTP_REFERER"])) {
+	header("LOCATION:data_input.php");
+}
+
 require("php_class/convert.php");
 require("php_class/convertHelper.php");
 
@@ -29,9 +34,9 @@ require("php_class/convertHelper.php");
     $zonal_coor = $_POST["zonal_coordinator"];
 	/*$area_couns = 1;
     $zonal_coor = 1;*/
-	
+
 	$c1 = new Convert($title,$firstname,$lastname,$agerange,$homeTelNum,$officeTelNum,$mobileTelNum,$email,$postcode,$address,$county,$city,$country,$altarCallResponse,$prayerPoints,$regDate,$area_couns,$zonal_coor);
-	
+
 	$ch = new convertHelper();
 	$result = $ch->insertConvert($c1);
 	if($result)

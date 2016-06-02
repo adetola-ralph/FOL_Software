@@ -1,5 +1,6 @@
 <?php
-	$page_title = "Welcome!!!"; 
+	include_once("php_class/auth.php");
+	$page_title = "Welcome!!!";
 	include_once("layout/header.php");
 ?>
     <div class="row">
@@ -13,7 +14,7 @@
                         <i class="glyphicon glyphicon-user gi-5x" aria-hidden="true"></i>
                         <p class="align-center">Add new Convert</p>
                     </a>
-                    
+
                 </div>
                 <div class="col-xs-4">
                 </div>
@@ -48,6 +49,6 @@
                 <div class="col-xs-4">
                 </div>
         	</div>
-        </div>    	    
+        </div>
     </div>
 <?php include_once("layout/footer.php");?>

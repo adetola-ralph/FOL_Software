@@ -1,5 +1,6 @@
 <?php
-	$page_title = "Print CSV Page"; 
+	include_once("php_class/auth.php");
+	$page_title = "Print CSV Page";
 	include_once("layout/header.php");
 ?>
 
@@ -8,7 +9,7 @@
         <div class="col-md-6 col-md-offset-3">
         	<div class="form-group">
             	<label for="select_date" class="control-label col-sm-3">
-                	Select Date: 
+                	Select Date:
                 </label>
                 <div class="col-sm-9">
                 	<select name="select_date" id="select_date" class="form-control">
