@@ -240,7 +240,6 @@ $(document).ready(function()
 		}
 	});
 	
-	
 	//Modernizr test for svg image support
 	if (!Modernizr.svg) {
 	  $(".navbar-brand img").attr("src", "../images/logo.png");

@@ -3,6 +3,10 @@ session_start();
 include("/configs/db.php");
 $page_title = "Please enter you login details";
 include_once("layout/header.php");
+
+if(isset($_SESSION['auth'])) {
+  header("LOCATION:index.php");
+}
 ?>
 
 <div class="row">
