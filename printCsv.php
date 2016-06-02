@@ -1,7 +1,7 @@
 <?php
 	include_once("php_class/auth.php");
 	// echo(isset($_SERVER["HTTP_REFERER"]));
-	if($_SERVER["HTTP_REFERER"] !== "http://folsoftware.local/print.php" || !isset($_SERVER["HTTP_REFERER"])) {
+	if(!isset($_SERVER["HTTP_REFERER"])) {
 		header("LOCATION:print.php");
 	}
 

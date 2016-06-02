@@ -1,6 +1,6 @@
 <?php
 include_once("php_class/auth.php");
-if($_SERVER["HTTP_REFERER"] !== "http://folsoftware.local/data_input.php" || !isset($_SERVER["HTTP_REFERER"])) {
+if(!isset($_SERVER["HTTP_REFERER"])) {
 	header("LOCATION:data_input.php");
 }
 
