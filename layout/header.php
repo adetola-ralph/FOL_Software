@@ -19,6 +19,7 @@ if(!isset($_SESSION["auth"]))
 		<link href='../style/style.css' rel='stylesheet' type='text/css' />
 		<link href="../style/bootstrap.min.css"  rel='stylesheet' type='text/css' />
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/lumen/bootstrap.min.css" rel="stylesheet">
 		
 		<!--[if lt IE 9]>
 		  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
