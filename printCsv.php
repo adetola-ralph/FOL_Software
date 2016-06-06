@@ -38,7 +38,7 @@
 	fputcsv($output, $file_header);
 
 	//data source
-	$db = new MyDatabase("localhost","foldb","root","");
+	$db = new MyDatabase("eu-cdbr-azure-west-d.cloudapp.net","folappdb", "b853a90a974d6f","8d4c78a1");
  	$conn = $db->get_connection();
 
 
