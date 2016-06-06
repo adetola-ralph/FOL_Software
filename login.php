@@ -47,7 +47,7 @@ if(isset($_SESSION['auth'])) {
 
       $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-      echo(var_dump($result));
+      /*echo(var_dump($result));*/
       if($result == false)
       {
         echo('<script type="text/javascript">'.
