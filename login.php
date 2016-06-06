@@ -29,24 +29,24 @@ if(isset($_SESSION['auth'])) {
       </div>
     </div>
   </div>
-  
+
   <?php
-    
+
     if(isset($_POST["submit"]))
     {
       $username = $_POST["username"];
       $password = $_POST["password"];
 
-      $db = new MyDatabase("localhost","foldb","root","");
+      $db = new MyDatabase("eu-cdbr-azure-west-d.cloudapp.net","folappdb", "b853a90a974d6f","8d4c78a1");
       $conn = $db->get_connection();
 
       $query = "SELECT * FROM authentication WHERE username = ?";
       $stmt = $conn->prepare($query);
       $stmt->bindParam("1",$username);
       $stmt->execute();
-      
+
       $result = $stmt->fetch(PDO::FETCH_ASSOC);
-      
+
       echo(var_dump($result));
       if($result == false)
       {
@@ -68,7 +68,7 @@ if(isset($_SESSION['auth'])) {
         }
       }
     }
-  
-   
+
+
     include_once("layout/footer.php");
   ?>
