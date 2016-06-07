@@ -38,7 +38,12 @@
 	fputcsv($output, $file_header);
 
 	//data source
-	$db = new MyDatabase("localhost","foldb","root","");
+	$dbinfo = MyDatabase::getConnectionDetails();
+	$host = $dbinfo["host"];
+	$database = $dbinfo["database"];
+	$username = $dbinfo["username"];
+	$password = $dbinfo["password"];
+	$db = new MyDatabase($host,$database,$username,$password);
  	$conn = $db->get_connection();
 
 

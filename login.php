@@ -37,7 +37,12 @@ if(isset($_SESSION['auth'])) {
       $username = $_POST["username"];
       $password = $_POST["password"];
 
-      $db = new MyDatabase("localhost","foldb","root","");
+      $dbinfo = MyDatabase::getConnectionDetails();
+      $host = $dbinfo["host"];
+      $database = $dbinfo["database"];
+      $db_username = $dbinfo["username"];
+      $db_password = $dbinfo["password"];
+      $db = new MyDatabase($host,$database,$db_username,$db_password);
       $conn = $db->get_connection();
 
       $query = "SELECT * FROM authentication WHERE username = ?";

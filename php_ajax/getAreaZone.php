@@ -2,7 +2,12 @@
 
 	include("../configs/db.php");
 	
-	$db = new MyDatabase("localhost","foldb","root","");
+	$dbinfo = MyDatabase::getConnectionDetails();
+	$host = $dbinfo["host"];
+	$database = $dbinfo["database"];
+	$username = $dbinfo["username"];
+	$password = $dbinfo["password"];
+	$db = new MyDatabase($host,$database,$username,$password);
 	$conn = $db->get_connection();
 	
 	$outcode = $_GET["postcode"];

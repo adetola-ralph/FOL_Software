@@ -2,7 +2,7 @@
 	include_once("php_class/auth.php");
 	$page_title = "Welcome!!!";
 	include_once("layout/header.php");
-    echo($_SESSION["role"]);
+    //echo($_SESSION["role"]);
 
     $role =  $_SESSION["role"]; //admin or normal
 ?>

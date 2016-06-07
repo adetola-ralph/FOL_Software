@@ -9,7 +9,12 @@ class convertHelper
 	
 	public function __construct()
 	{
-		$db = new MyDatabase("localhost","foldb","root","");
+		$dbinfo = MyDatabase::getConnectionDetails();
+		$host = $dbinfo["host"];
+		$database = $dbinfo["database"];
+		$username = $dbinfo["username"];
+		$password = $dbinfo["password"];
+		$db = new MyDatabase($host,$database,$username,$password);
 		$this->conn = $db->get_connection();	
 	}
 		
