@@ -5,10 +5,10 @@ $(document).ready(function()
 	
 	//Ajax to load country into select form
 	$.ajax({
-	url:"../php_ajax/getcountry.php",
-	type: "GET",
-	dataType:"json",
-	success:function( json ){
+		url:"../php_ajax/getcountry.php",
+		type: "GET",
+		dataType:"json",
+		success:function( json ){
 			var countryselect = showCountryjQuery(json);
 			$("#country").html(countryselect);
 		}
