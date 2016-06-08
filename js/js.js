@@ -5,10 +5,10 @@ $(document).ready(function()
 	
 	//Ajax to load country into select form
 	$.ajax({
-	url:"../php_ajax/getcountry.php",
-	type: "GET",
-	dataType:"json",
-	success:function( json ){
+		url:"../php_ajax/getcountry.php",
+		type: "GET",
+		dataType:"json",
+		success:function( json ){
 			var countryselect = showCountryjQuery(json);
 			$("#country").html(countryselect);
 		}
@@ -78,7 +78,7 @@ $(document).ready(function()
 	
 	//JS code for the ideal-postcodes api
 	$('#lookup_field').setupPostcodeLookup({
-		  api_key: 'ak_ilmmvxk9PTsqzchJdhRVOvGU9IEnP',
+		  api_key: 'ak_im3pb5hjhDTXfskNUnoIgl74BWZOx',
 		  output_fields: {
 			//line_1: '#first_line',  
 			county: '#county',

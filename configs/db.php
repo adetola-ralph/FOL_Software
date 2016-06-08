@@ -43,5 +43,11 @@ class MyDatabase
 			return $this->db_conn;
 		//}return null;
 	}
+
+	public static function getConnectionDetails()
+	{
+		$dbinfo = parse_ini_file("database_config.ini");
+		return $dbinfo;
+	}
 }
 ?>

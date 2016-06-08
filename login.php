@@ -37,7 +37,13 @@ if(isset($_SESSION['auth'])) {
       $username = $_POST["username"];
       $password = $_POST["password"];
 
-      $db = new MyDatabase("eu-cdbr-azure-west-d.cloudapp.net","folappdb", "b853a90a974d6f","8d4c78a1");
+
+      $dbinfo = MyDatabase::getConnectionDetails();
+      $host = $dbinfo["host"];
+      $database = $dbinfo["database"];
+      $db_username = $dbinfo["username"];
+      $db_password = $dbinfo["password"];
+      $db = new MyDatabase($host,$database,$db_username,$db_password);
       $conn = $db->get_connection();
 
       $query = "SELECT * FROM authentication WHERE username = ?";
@@ -48,6 +54,7 @@ if(isset($_SESSION['auth'])) {
       $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
       /*echo(var_dump($result));*/
+
       if($result == false)
       {
         echo('<script type="text/javascript">'.
@@ -68,7 +75,6 @@ if(isset($_SESSION['auth'])) {
         }
       }
     }
-
 
     include_once("layout/footer.php");
   ?>

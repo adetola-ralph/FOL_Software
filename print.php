@@ -2,6 +2,11 @@
 	include_once("php_class/auth.php");
 	$page_title = "Print CSV Page";
 	include_once("layout/header.php");
+
+    $role = $_SESSION["role"];
+    if($role === "normal") {
+        header("LOCATION:index.php");
+    }
 ?>
 
 <div class="row">

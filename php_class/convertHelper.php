@@ -9,7 +9,12 @@ class convertHelper
 
 	public function __construct()
 	{
-		$db = new MyDatabase("eu-cdbr-azure-west-d.cloudapp.net","folappdb", "b853a90a974d6f","8d4c78a1");
+		$dbinfo = MyDatabase::getConnectionDetails();
+		$host = $dbinfo["host"];
+		$database = $dbinfo["database"];
+		$username = $dbinfo["username"];
+		$password = $dbinfo["password"];
+		$db = new MyDatabase($host,$database,$username,$password);
 		$this->conn = $db->get_connection();
 	}
 
