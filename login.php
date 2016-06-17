@@ -71,7 +71,8 @@ if(isset($_SESSION['auth'])) {
           } else {
             echo('<script type="text/javascript">'.
           '$(".error-message").removeClass("hidden");'.
-          '$(".error-message p strong").html("Access denied");'.
+          '$(".error-message p strong").html("Access denied, account has been locked");'.
+          'setTimeout(function() {$(".error-message").hide();}, 3000);'.
           '</script>');
           }
           
@@ -79,6 +80,7 @@ if(isset($_SESSION['auth'])) {
           echo('<script type="text/javascript">'.
           '$(".error-message").removeClass("hidden");'.
           '$(".error-message p strong").html("Your username or password is wrong");'.
+          'setTimeout(function() {$(".error-message").hide();}, 3000);'.
           '</script>');
         }
       }
