@@ -62,9 +62,19 @@ if(isset($_SESSION['auth'])) {
       }
       else {
         if(password_verify($password, $result["password"])) {
-          $_SESSION["auth"] = true;
-          $_SESSION["role"] = $result["role"];
-          header("LOCATION:index.php");
+          
+          if($result["locked"] == 0) {
+            $_SESSION["auth"] = true;
+            $_SESSION["role"] = $result["role"];
+            $_SESSION["locked"] = $result["locked"];
+            header("LOCATION:index.php");
+          } else {
+            echo('<script type="text/javascript">'.
+          '$(".error-message").removeClass("hidden");'.
+          '$(".error-message p strong").html("Access denied");'.
+          '</script>');
+          }
+          
         } else {
           echo('<script type="text/javascript">'.
           '$(".error-message").removeClass("hidden");'.

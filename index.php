@@ -5,6 +5,8 @@
     //echo($_SESSION["role"]);
 
     $role =  $_SESSION["role"]; //admin or normal
+    // $locked = $_SESSION["locked"];
+    // echo($locked);
 ?>
     <div class="row">
     	<div class="col-md-3">
