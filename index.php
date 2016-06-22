@@ -5,6 +5,8 @@
     //echo($_SESSION["role"]);
 
     $role =  $_SESSION["role"]; //admin or normal
+    // $locked = $_SESSION["locked"];
+    // echo($locked);
 ?>
     <div class="row">
     	<div class="col-md-3">
@@ -58,7 +60,7 @@
             	<div class="col-xs-4">
         		</div>
                 <div class="col-xs-4">
-                	<a href="#" class="btn btn-lg btn-success" role="button" disabled="disabled">
+                	<a href="settings.php" class="btn btn-lg btn-success" role="button">
                         <!--<img src="images/add-contact.png" width="100" height="100" class="img-responsive img-thumbnail"/>-->
                         <i class="glyphicon glyphicon-cog gi-5x" aria-hidden="true"></i>
                         <p class="align-center">Settings</p>

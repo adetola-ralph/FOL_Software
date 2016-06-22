@@ -15,7 +15,7 @@ if(isset($_SESSION['auth'])) {
         <div class="panel-body">
           <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
             <div class="form-group">
-              <label for="username">Usernam</label>
+              <label for="username">Username</label>
               <input type="text" class="form-control" id="username" placeholder="Username" name="username">
             </div>
             <div class="form-group">
@@ -34,8 +34,17 @@ if(isset($_SESSION['auth'])) {
 
     if(isset($_POST["submit"]))
     {
-      $username = $_POST["username"];
-      $password = $_POST["password"];
+      $username = trim($_POST["username"]);
+      $password = trim($_POST["password"]);
+
+      if(strlen($username) == 0 || strlen($password) == 0) {
+         echo('<script type="text/javascript">'.
+          '$(".error-message").removeClass("hidden");'.
+          '$(".error-message p strong").html("You\'ve got an empty field");'.
+          'setTimeout(function() {$(".error-message").hide();}, 3000);'.
+          '</script>');
+        return;
+      } 
 
 
       $dbinfo = MyDatabase::getConnectionDetails();
@@ -58,19 +67,32 @@ if(isset($_SESSION['auth'])) {
       if($result == false)
       {
         echo('<script type="text/javascript">'.
-        '$(".error-message").removeClass("hidden");'.
-        '$(".error-message p strong").html("Your username or password is wrong");'.
-        '</script>');
+          '$(".error-message").removeClass("hidden");'.
+          '$(".error-message p strong").html("Your username or password is wrong");'.
+          'setTimeout(function() {$(".error-message").hide();}, 3000);'.
+          '</script>');
       }
       else {
         if(password_verify($password, $result["password"])) {
-          $_SESSION["auth"] = true;
-          $_SESSION["role"] = $result["role"];
-          header("LOCATION:index.php");
+          
+          if($result["locked"] == 0) {
+            $_SESSION["auth"] = true;
+            $_SESSION["role"] = $result["role"];
+            $_SESSION["locked"] = $result["locked"];
+            header("LOCATION:index.php");
+          } else {
+            echo('<script type="text/javascript">'.
+          '$(".error-message").removeClass("hidden");'.
+          '$(".error-message p strong").html("Access denied, account has been locked");'.
+          'setTimeout(function() {$(".error-message").hide();}, 3000);'.
+          '</script>');
+          }
+          
         } else {
           echo('<script type="text/javascript">'.
           '$(".error-message").removeClass("hidden");'.
           '$(".error-message p strong").html("Your username or password is wrong");'.
+          'setTimeout(function() {$(".error-message").hide();}, 3000);'.
           '</script>');
         }
       }

@@ -226,6 +226,7 @@ $(document).ready(function()
 				 data:$("#form").serialize(),
 				 dataType:"",
 				 success: function(data){
+					   // alert(data);
 					   if(data == true)
 					   {
 							   alert("Inserted sucessfully");

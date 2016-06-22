@@ -40,7 +40,7 @@ if(!isset($_SESSION["auth"]))
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
-						<span class="icon-ba"></span>
+						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="../index.php"> 
                         <img src="../images/logo.svg" alt="logo" height="70" width="70"/>
@@ -50,7 +50,7 @@ if(!isset($_SESSION["auth"]))
                    </a> 
 				</div>
 				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav text-center">
 						<?php if($auth){echo('<li><a type="button" class="" href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>');}?>
 					</ul>
 				</div>
