@@ -15,7 +15,7 @@ if(isset($_SESSION['auth'])) {
         <div class="panel-body">
           <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
             <div class="form-group">
-              <label for="username">Usernam</label>
+              <label for="username">Username</label>
               <input type="text" class="form-control" id="username" placeholder="Username" name="username">
             </div>
             <div class="form-group">
@@ -34,8 +34,17 @@ if(isset($_SESSION['auth'])) {
     
     if(isset($_POST["submit"]))
     {
-      $username = $_POST["username"];
-      $password = $_POST["password"];
+      $username = trim($_POST["username"]);
+      $password = trim($_POST["password"]);
+
+      if(strlen($username) == 0 || strlen($password) == 0) {
+         echo('<script type="text/javascript">'.
+          '$(".error-message").removeClass("hidden");'.
+          '$(".error-message p strong").html("You\'ve got an empty field");'.
+          'setTimeout(function() {$(".error-message").hide();}, 3000);'.
+          '</script>');
+        return;
+      } 
 
       $dbinfo = MyDatabase::getConnectionDetails();
       $host = $dbinfo["host"];
@@ -56,9 +65,10 @@ if(isset($_SESSION['auth'])) {
       if($result == false)
       {
         echo('<script type="text/javascript">'.
-        '$(".error-message").removeClass("hidden");'.
-        '$(".error-message p strong").html("Your username or password is wrong");'.
-        '</script>');
+          '$(".error-message").removeClass("hidden");'.
+          '$(".error-message p strong").html("Your username or password is wrong");'.
+          'setTimeout(function() {$(".error-message").hide();}, 3000);'.
+          '</script>');
       }
       else {
         if(password_verify($password, $result["password"])) {
