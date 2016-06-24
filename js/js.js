@@ -120,7 +120,7 @@ $(document).ready(function()
 			  if(data.code===4040)
 			  {
 				  //alert(otherOutcodeResult);
-				  alert(outcode);
+				  //alert(outcode);
 				  if(otherOutcodeResult)
 				  {
 					 //check db for zonal & area couns
@@ -216,9 +216,9 @@ $(document).ready(function()
 		else
 		{
 			//event.preventDefault();
-		  	alert("All clear");
+		  	//alert("All clear");
 			//alert(JSON.stringify($("#form").serializeArray()));
-            alert($("#form").serialize());
+            //alert($("#form").serialize());
             console.log($("#form").serialize());
 		   $.ajax({
 				 url:"../data_process.php",
@@ -231,7 +231,7 @@ $(document).ready(function()
 					   {
 							   alert("Inserted sucessfully");
 					   }
-					   else if(data == false)
+					   else
 					   {
 							   alert("not Inserted sucessfully");
 					   }
