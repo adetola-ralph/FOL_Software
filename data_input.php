@@ -9,7 +9,7 @@
                     <span class=""><strong>Form obects with <i class="glyphicon glyphicon-asterisk" aria-hidden="true"></i>  and all dropdown objects are all required to be filled</span></strong>
                 </div>
             </div>
-      		<form role="form" class="form-horizontal" id="form" method="post">
+      		<form role="form" class="form-horizontal" id="form" method="post" autocomplete="off">
 				<div class="row">
                     <div class="alert alert-danger hidden"  id="alert">
                     	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
