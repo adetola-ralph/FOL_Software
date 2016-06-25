@@ -14,6 +14,34 @@ $(document).ready(function()
 		}
 	});
 	
+	//Ajax to load dates in the database based on the events
+	$.ajax({
+		url:"../php_ajax/getDate.php",
+		type:"GET",
+		dataType:"json",
+		success:function(json){
+			for(var i=0;i<json.length;i++)
+			{
+				//var dateObj = jQuery.parseJSON(json[i]); //{"year":"xxxx","month":"xx"}
+				var _month = json[i].month;
+				var _year = json[i].year;
+				
+				$("#select_date").append(new Option(_year+"/"+_month,_year+"/"+_month));
+			}
+		}
+		});
+		
+		//print.php submit button
+		$("#dateSubmit").on("click", function(event){
+				//event.preventDefault();
+				if($("#select_date").val() == "0")
+				{
+					event.preventDefault();
+					alert("Please select a date");
+					$("#select_date").parents(".form-group").addClass("has-error");
+				}
+			});
+	
 	//Post code validator
 	/*$("#checkpostcode").on("click",function(){
 	var tryyu = checkPostCode();	
@@ -50,15 +78,17 @@ $(document).ready(function()
 	
 	//JS code for the ideal-postcodes api
 	$('#lookup_field').setupPostcodeLookup({
-		  api_key: 'ak_ilmmvxk9PTsqzchJdhRVOvGU9IEnP',
+		  api_key: 'ak_im3pb5hjhDTXfskNUnoIgl74BWZOx',
 		  output_fields: {
 			//line_1: '#first_line',  
 			county: '#county',
 			postcode: "#postcode",
 			post_town: '#post_town',
 		  },
-		  input_class: "",
-		  button_class: "btn btn-primary btn-md",
+		  /*input_class: "",
+		  button_class: "btn btn-primary btn-md",*/
+          button: '#customButton',
+          input: '#customInput',
 		  dropdown_class: "form-control",
 		  /*onLookupTriggered: function()
 		  {
@@ -80,7 +110,7 @@ $(document).ready(function()
 		  },
 		  onSearchCompleted: function(data)
 		  {
-			  var postcode = $("#idpc_input").val();
+			  var postcode = $("#customInput").val();
 			  var outcode = postcode.split(" ")[0];
 			  var otherOutcode = ["AF1","EM1","US1","OT1"];
 			  var otherOutcodeResult = otherOutcode.some(function(item, index, array){
@@ -89,11 +119,11 @@ $(document).ready(function()
 			  
 			  if(data.code===4040)
 			  {
-				  alert(otherOutcodeResult);
-				  alert(outcode);
+				  //alert(otherOutcodeResult);
+				  //alert(outcode);
 				  if(otherOutcodeResult)
 				  {
-					 //check db for zonal & area superss
+					 //check db for zonal & area couns
 					 $("#postcode").addClass("valid");
 					 $("#postcode").val(postcode.toUpperCase());
 					 $.ajax({
@@ -102,7 +132,7 @@ $(document).ready(function()
 						data:{postcode:outcode},
 						dataType:"",
 						success: function(data){
-							//returns the format {"zone":"??","zonal_coor":"??","area":"??","area_sup":"??"}
+							//returns the format {"zone":"??","zonal_coor":"??","area":"??","area_coun":"??"}
 							//alert(data);
 							//console.log(data);
 							
@@ -112,10 +142,10 @@ $(document).ready(function()
 							zone[1] = obj.zonal_coor;
 							var area = [];
 							area[0] = obj.area;
-							area[1] = obj.area_sup;
+							area[1] = obj.area_coun;
 							
 							$('#zonal_coordinator').append(new Option(zone[1],zone[0]));
-							$('#area_supervisor').append(new Option(area[1],area[0]));
+							$('#area_counsellor').append(new Option(area[1],area[0]));
 							}
 						}); 
 				  }
@@ -131,7 +161,7 @@ $(document).ready(function()
 						data:{postcode:outcode},
 						dataType:"",
 						success: function(data){
-							//returns the format {"zone":"??","zonal_coor":"??","area":"??","area_sup":"??"}
+							//returns the format {"zone":"??","zonal_coor":"??","area":"??","area_coun":"??"}
 							//alert(data);
 							
 							var obj = jQuery.parseJSON(data);
@@ -140,10 +170,10 @@ $(document).ready(function()
 							zone[1] = obj.zonal_coor;
 							var area = [];
 							area[0] = obj.area;
-							area[1] = obj.area_sup;
+							area[1] = obj.area_coun;
 							
 							$('#zonal_coordinator').append(new Option(zone[1],zone[0]));
-							$('#area_supervisor').append(new Option(area[1],area[0]));
+							$('#area_counsellor').append(new Option(area[1],area[0]));
 							}
 						});
 				  
@@ -160,7 +190,16 @@ $(document).ready(function()
 			if($(this).val().length === 0)
 			{
 			  errorValue++;
-			}	
+			  $(this).parents(".form-group").addClass("has-error");
+			}
+			else
+			{
+				
+				if(($(this).parents(".form-group").hasClass("has-error")) && $(this).val().length !== 0 )
+				{
+					$(this).parents(".form-group").removeClass("has-error");
+				}
+			}
 		});
 		
 		if(!($("#postcode").hasClass("valid")))
@@ -169,7 +208,7 @@ $(document).ready(function()
 			$("#postcodeerror3").removeClass("hide");
 		}else if($("#postcode").hasClass("valid")){errorValue--;$("#postcodeerror3").addClass("hide");}
 		
-		
+		//alert(errorValue);
 		if(errorValue>0)
 		{
 			event.preventDefault();
@@ -178,9 +217,9 @@ $(document).ready(function()
 		else
 		{
 			//event.preventDefault();
-		  	alert("All clear");
+		  	//alert("All clear");
 			//alert(JSON.stringify($("#form").serializeArray()));
-            alert($("#form").serialize());
+            //alert($("#form").serialize());
             console.log($("#form").serialize());
 		   $.ajax({
 				 url:"data_process.php",
@@ -188,11 +227,12 @@ $(document).ready(function()
 				 data:$("#form").serialize(),
 				 dataType:"",
 				 success: function(data){
+					   // alert(data);
 					   if(data == true)
 					   {
 							   alert("Inserted sucessfully");
 					   }
-					   else if(data == false)
+					   else
 					   {
 							   alert("not Inserted sucessfully");
 					   }
@@ -202,7 +242,10 @@ $(document).ready(function()
 		}
 	});
 	
-	
+	//Modernizr test for svg image support
+	if (!Modernizr.svg) {
+	  $(".navbar-brand img").attr("src", "../images/logo.png");
+	}
 	
 });
 
@@ -234,20 +277,10 @@ function checkPostCode()
 /**
 *function that converts json into options to be loaded into the select input form
 */
-function showObjectjQuery(obj) {
+function showCountryjQuery(obj) {
   var result = "";
   $.each(obj, function(k, v) {  
     result += "<option value=\""+v.country_code + "\">" + v.country_name + "</option>";
   });
   return result;
-}
-
-function getZoneArea(outcode)
-{
-	
-}
-
-function getArea()
-{
-	
 }

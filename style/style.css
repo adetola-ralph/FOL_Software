@@ -1,0 +1,15 @@
+body
+{
+	padding-top:60px;
+	padding-bottom:60px;
+}
+
+.form-control-feedback
+{
+    right:10px !important;
+}
+
+.gi-2x{font-size: 2em !important;}
+.gi-3x{font-size: 3em !important;}
+.gi-4x{font-size: 4em !important;}
+.gi-5x{font-size: 5em !important;}

@@ -5,60 +5,81 @@
 class convertHelper
 {
 	
-	private $conn;
+	public $conn;
 	
 	public function __construct()
 	{
-		$db = new MyDatabase("localhost","foldb","root","root");
+		$dbinfo = MyDatabase::getConnectionDetails();
+		$host = $dbinfo["host"];
+		$database = $dbinfo["database"];
+		$username = $dbinfo["username"];
+		$password = $dbinfo["password"];
+		$db = new MyDatabase($host,$database,$username,$password);
 		$this->conn = $db->get_connection();	
 	}
 		
-	public static function getAll()
+	public function getAll()
 	{
-		$query = "SELECT * FROM converts";
+		$convertArray = array();
+		
+		$query = "SELECT COUNT(*) FROM converts";
 		$stmt = $this->conn->prepare($query);
 		$stmt->execute();
-		$convertArray = array();
 		
 		if($stmt->fetchColumn() > 0)
 		{
-			$convertArray = $stmt->fetchAll(PDO::FETCH_CLASS, "Convert");
-			return $convertArray;
+			$query1 = "SELECT * FROM converts";
+			$stmt1 = $this->conn->prepare($query1);
+			$stmt1->execute();
+			
+			$convertArray1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+			return $convertArray1;
 		}else{return null;}
 	}
 	
 	public function getConvert($id)
 	{
-		$query = "SELECT * FROM converts WHERE id = ?";
+		$query = "SELECT count(*) FROM converts WHERE id = ?";
 		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam("i",$id);
+		$stmt->bindParam("1",$id);
 		$stmt->execute();
 		
 		if($stmt->fetchColumn() == 1)
 		{
-			return $stmt->fetch(PDO::FETCH_CLASS, "Convert");
+			$query1 = "SELECT * FROM converts WHERE id = ?";
+			$stmt1 = $this->conn->prepare($query1);
+			$stmt1->bindParam("1",$id);
+			$stmt1->execute();
+			return $stmt1->fetch(PDO::FETCH_ASSOC);
 		}else{return null;}
 		
 	}
 	
-	public static function getByYear($year)
+	public function getByYear($year)
 	{
-		$query = "SELECT * FROM converts WHERE YEAR(date) = ?";
+		$query = "SELECT COUNT(*) FROM converts WHERE YEAR(regDate) = ?";
+		
 		$stmt = $this->conn->prepare($query);
-		$stmt->bindParam("i",$year);
+		//var_dump($this->conn);
+		$stmt->bindParam("1",$year);
 		$stmt->execute();
 		$convertArray = array();
 		
 		if($stmt->fetchColumn() > 0)
 		{
-			$convertArray = $stmt->fetchAll(PDO::FETCH_CLASS, "Convert");
+			$query1 = "SELECT * FROM converts WHERE YEAR(regDate) = ?";
+			$stmt1 = $this->conn->prepare($query1);
+			$stmt1->bindParam("1",$year);
+			$stmt1->execute();
+			
+			$convertArray = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 			return $convertArray;
 		}else{return null;}
 	}
 	
 	public function insertConvert(Convert $convert)
 	{
-		$stringValues = "title,firstname,lastname,agerange,homeTelNum,officeTelNum,mobileTelNum,email,postcode,address,county,city,country,altarCallResponse,prayerPoints,regDate,area_supers,zonal_coor";
+		$stringValues = "title,firstname,lastname,agerange,homeTelNum,officeTelNum,mobileTelNum,email,postcode,address,county,city,country,altarCallResponse,prayerPoints,regDate,area_couns,zonal_coor";
 		$query = "INSERT INTO converts(".$stringValues.") VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		$stmt = $this->conn->prepare($query);
 		
@@ -79,7 +100,7 @@ class convertHelper
 		$stmt->bindParam(14,$convert->altarCallResponse,PDO::PARAM_STR);
 		$stmt->bindParam(15,$convert->prayerPoints,PDO::PARAM_STR);
 		$stmt->bindParam(16,$convert->regDate,PDO::PARAM_STR);
-		$stmt->bindParam(17,$convert->area_supers,PDO::PARAM_STR);
+		$stmt->bindParam(17,$convert->area_couns,PDO::PARAM_STR);
 		$stmt->bindParam(18,$convert->zonal_coor,PDO::PARAM_STR);
 		
 		$stmt->execute();
@@ -96,7 +117,7 @@ class convertHelper
 	
 	public function updateConvert(Convert $convert)
 	{
-		$stringValues = "title = ?,firstname = ?,lastname = ?,agerange = ?,homeTelNum = ?,officeTelNum = ?,mobileTelNum = ?,email = ?,postcode = ?,address = ?,county = ?,city = ?,country = ?,altarCallResponse = ?,prayerPoints = ?,area_supers = ?,zonal_coor = ?";
+		$stringValues = "title = ?,firstname = ?,lastname = ?,agerange = ?,homeTelNum = ?,officeTelNum = ?,mobileTelNum = ?,email = ?,postcode = ?,address = ?,county = ?,city = ?,country = ?,altarCallResponse = ?,prayerPoints = ?,area_couns = ?,zonal_coor = ?";
 		
 		$query = "UPDATE converts(".$stringValues.") WHERE id = ?";
 		$stmt = $this->conn->prepare($query);
@@ -115,7 +136,7 @@ class convertHelper
 		$stmt->bindParam(13,$convert->country,PDO::PARAM_STR);
 		$stmt->bindParam(14,$convert->altarCallResponse,PDO::PARAM_STR);
 		$stmt->bindParam(15,$convert->prayerPoints,PDO::PARAM_STR);
-		$stmt->bindParam(16,$convert->area_supers,PDO::PARAM_STR);
+		$stmt->bindParam(16,$convert->area_couns,PDO::PARAM_STR);
 		$stmt->bindParam(17,$convert->zonal_coor,PDO::PARAM_STR);
 		
 		$stmt->bindParam(18,$convert->id,PDO::PARAM_INT);
@@ -148,5 +169,6 @@ class convertHelper
 		}
 	}
 }
-
+/*$chy = new convertHelper();
+var_dump(get_class_methods($chy->conn));*/
 ?>
